@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
-            $table->string('number_chaper');
-            $table->unsignedBigInteger('story_id')->index();
-            $table->string('name');
-            $table->text('content');
-            $table->primary(['number_chaper', 'story_id']);
-            $table->foreign('story_id')->references('id')->on('stories')->onDelete('cascade');
+        Schema::create('user_stories', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('story_id')->constrained('stories')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chapters');
+        Schema::dropIfExists('user_stories');
     }
 };

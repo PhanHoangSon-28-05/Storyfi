@@ -30,4 +30,9 @@ class Story extends Model
     {
         return $this->belongsToMany(Category::class, 'category_story', 'story_id', 'category_id');
     }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_stories',  'story_id', 'user_id');
+    }
 }

@@ -28,6 +28,11 @@
                     <li><a href="{{ URL::route('stories.index') }}">List Story</a></li>
                 </ul>
             </li>
+            <li><a><i class="fa fa-home"></i> Chapter <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ URL::route('chapters.index') }}">List Chapter</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

@@ -18,7 +18,7 @@ class StoryController extends Controller
      */
     public function index()
     {
-        $stories = Story::all();
+        $stories = Story::whereHas('users')->get();
         $titles = Title::all();
         return view('admin.stories.index', compact('stories', 'titles'));
     }
@@ -48,8 +48,15 @@ class StoryController extends Controller
 
         // dd($story->toArray());
         $story->categories()->attach($dataCreate['categories_ids']);
-        return redirect()->route('stories.index')->with('message', 'Create sucess');
+
+        if (auth()->check()) {
+            $story->users()->attach(auth()->user()->id);
+        }
+
+
+        return redirect()->route('stories.index')->with('message', 'Create success');
     }
+
 
     /**
      * Display the specified resource.

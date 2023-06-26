@@ -25,7 +25,7 @@
                                 @method('PUT')
 
                                 <label style="font-weight: bold;" for="fullname">Full Name * :</label>
-                                <input type="text" value="{{ old('fullname') ?? $user->fullname }}" id="fulename"
+                                <input type="text" value="{{ old('fullname') ?? $user->fullname }}" id="fullname"
                                     class="form-control" name="fullname" />
                                 @error('fullname')
                                     <span class="text-danger">{{ $message }}</span><br>

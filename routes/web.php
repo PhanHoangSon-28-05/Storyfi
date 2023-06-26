@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChapterController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\StoryController;
 use App\Http\Controllers\Admin\TitleController;
@@ -44,10 +45,11 @@ Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perfor
 
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('titles', TitleController::class);
     Route::resource('stories', StoryController::class);
-})->middleware('auth');
+    Route::resource('chapters', ChapterController::class);
+});

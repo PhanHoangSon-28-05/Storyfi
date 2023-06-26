@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Story')
+@section('title', 'The story has chapters')
 @section('content')
     <div class="col-md-12 col-sm-12 ">
         @if (session('massage'))
@@ -7,16 +7,16 @@
         @endif
         <div class="x_panel">
             <div class="x_title">
-                <h2>KeyTable example <small>Story</small></h2>
+                <h2>KeyTable example <small>The story has chapters</small></h2>
 
                 <ul class="nav navbar-right panel_toolbox">
-                    <a type="button" href="{{ URL::route('stories.create') }}" class="btn btn-secondary">
+                    <a type="button" href="{{ URL::route('chapters.create') }}" class="btn btn-secondary">
                         Create
                     </a>
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" story="button"
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="button"
                             aria-expanded="false"><i class="fa fa-wrench"></i></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Settings 1</a>
@@ -43,37 +43,43 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Name other</th>
-                                        <th>View</th>
-                                        <th>Title</th>
+                                        <th>Name Story</th>
+                                        <th>Total chapters</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    @foreach ($stories as $story)
+                                    @foreach ($chapters as $chapter)
                                         <tr>
-                                            <td>{{ $story->id }}</td>
-                                            <td>{{ $story->name }}</td>
-                                            <td>{{ $story->name_other }}</td>
-                                            <td>{{ $story->view }}</td>
-                                            <td>{{ $story->titles->name }}</td>
+                                            <td>{{ $chapter->story_id }}</td>
+                                            <td>
+                                                @if ($chapter->stories)
+                                                    {{ $chapter->stories->name }}
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if (isset($stories))
+                                                    {{ $chapters->where('story_id', $chapter->story_id)->count('number_chaper') }}
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('stories.edit', $story->id) }}"><i
-                                                            class="fas fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item delete-story"
-                                                        onclick="confirmDelete({{ $story->id }})"><i
-                                                            class="fas fa-trash-alt"></i> Delete</a>
+                                                        href="{{ route('chapters.show', $chapter->story_id) }}">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
+
+
                             </table>
                         </div>
                     </div>
@@ -85,10 +91,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    function confirmDelete(storyId) {
-        if (confirm('Are you sure you want to delete story with ID ' + storyId + '?')) {
+    function confirmDelete(titleId) {
+        if (confirm('Are you sure you want to delete title with ID ' + titleId + '?')) {
             $.ajax({
-                url: '/admin/stories/' + storyId,
+                url: '/admin/titles/' + titleId,
                 type: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
