@@ -14,6 +14,7 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
         return \App\Models\Story::class;
     }
 
+
     public function getStory()
     {
         $userID = auth()->id();

@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Chapter;
 
+use App\Models\Chapter;
 use App\Models\Story;
 use App\Models\User_story;
 use App\Repositories\BaseRepository;
@@ -19,9 +20,16 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
     {
         $userID = auth()->id();
 
-        return $this->model->whereHas('users', function ($query) use ($userID) {
+        $storys = Story::whereHas('users', function ($query) use ($userID) {
             $query->where('user_id', $userID);
-        })->select('story_id')->groupBy('story_id')->get();
+        })->get();
+        // dd($storys);
+        $ids = [];
+        foreach ($storys as $story) {
+            $ids[] = $story['id'];
+        }
+
+        return $storys;
     }
 
     public function findChapter($story_id)
@@ -31,9 +39,9 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
         return $result;
     }
 
-    public function findChapterEdit($number_chapter)
+    public function findChapterEdit($id)
     {
-        $result = $this->model->where('number_chapter', $number_chapter)->first();
+        $result = $this->model->where('id', $id)->first();
 
         return $result;
     }
@@ -54,5 +62,24 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
         }
 
         return $this->model->create($attributes);
+    }
+
+    public function deleteChapter($id)
+    {
+        $storyId = Chapter::find($id)->story_id;
+
+        $query = [
+            'sumChapter' => Story::find($storyId)->decrement('sum_chapter', 1),
+            'point' => User_story::where('story_id', $storyId)->decrement('point', 5)
+        ];
+
+        $result = $this->find($id);
+        if ($result) {
+            $result->delete();
+
+            return true;
+        }
+
+        return false;
     }
 }

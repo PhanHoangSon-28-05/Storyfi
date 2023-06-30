@@ -54,26 +54,18 @@
                                 <tbody>
                                     @foreach ($chapters as $chapter)
                                         <tr>
-                                            <td>{{ $chapter->story_id }}</td>
+                                            <td>{{ $chapter->id }}</td>
                                             <td>
-                                                @if ($chapter->stories)
-                                                    {{ $chapter->stories->name }}
-                                                @else
-                                                    N/A
-                                                @endif
+                                                {{ $chapter->name }}
                                             </td>
                                             <td>
-                                                @if ($chapter->stories)
-                                                    {{ $chapter->stories->sum_chapter }}
-                                                @else
-                                                    N/A
-                                                @endif
+                                                {{ $chapter->sum_chapter }}
                                             </td>
                                             <td>
                                                 <div class="btn-group">
                                                     @can('show-chapter')
                                                         <a class="dropdown-item"
-                                                            href="{{ route('chapters.show', $chapter->story_id) }}">
+                                                            href="{{ route('chapters.show', $chapter->id) }}">
                                                             <i class="fas fa-eye"></i> View
                                                         </a>
                                                     @endcan
@@ -92,24 +84,3 @@
         </div>
     </div>
 @endsection
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    function confirmDelete(titleId) {
-        if (confirm('Are you sure you want to delete title with ID ' + titleId + '?')) {
-            $.ajax({
-                url: '/admin/titles/' + titleId,
-                type: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    window.location.reload();
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                }
-            });
-        }
-    }
-</script>

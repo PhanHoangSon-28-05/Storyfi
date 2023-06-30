@@ -78,7 +78,12 @@
                         <div class="profile_info">
                             <span>Welcome,</span>
                             <h2>
-                                {{ auth()->user()->fullname }}</h2>
+                                {{ auth()->user()->fullname }}
+
+                            </h2>
+                            <h2>
+                                Point: {{ auth()->user()->user_story->sum('point') }}
+                            </h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->

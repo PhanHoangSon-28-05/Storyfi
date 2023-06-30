@@ -53,7 +53,7 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        $stories = $this->storyRepo->getAll();
+        $stories = $this->storyRepo->getStory();
         return view('admin.chapters.create', compact('stories'));
     }
 
@@ -112,7 +112,7 @@ class ChapterController extends Controller
      */
     public function destroy($id)
     {
-        $chapters = $this->chapterRepo->delete($id);
+        $chapters = $this->chapterRepo->deleteChapter($id);
 
         return response()->json([
             'message' => 'Chapter deteled successfully '

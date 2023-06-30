@@ -55,4 +55,8 @@ class User extends Authenticatable
             $user->point = 0;
         });
     }
+    public function user_story()
+    {
+        return $this->hasMany(User_story::class, 'user_id');
+    }
 }

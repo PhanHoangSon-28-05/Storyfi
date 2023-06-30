@@ -60,13 +60,13 @@
                                                 <div class="btn-group">
                                                     @can('update-chapter')
                                                         <a class="dropdown-item"
-                                                            href="{{ route('chapters.edit', $chapter->number_chapter, $chapter->story_id) }}"><i
+                                                            href="{{ route('chapters.edit', $chapter->id) }}"><i
                                                                 class="fas fa-edit"></i> Edit</a>
                                                     @endcan
 
                                                     @can('delete-chapter')
                                                         <a class="dropdown-item delete-chapter"
-                                                            onclick="confirmDelete({{ $chapter->number_chapter }})"><i
+                                                            onclick="confirmDelete({{ $chapter->id }})"><i
                                                                 class="fas fa-trash-alt"></i> Delete</a>
                                                     @endcan
                                                 </div>

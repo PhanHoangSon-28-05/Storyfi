@@ -40,9 +40,9 @@
 
                                 <label style="font-weight: bold;" for="exampleFormControlSelect1"
                                     class="ms-0">Group</label>
-                                <select name="group" class="form-control" value={{ $role->group }}>
-                                    <option value="system">System</option>
-                                    <option value="user">User</option>
+                                <select name="group" class="form-control" >
+                                    <option value="system"{{ $role->group == 'system' ? 'selected' : '' }}>System</option>
+                                    <option value="user"{{ $role->group == 'user' ? 'selected' : '' }}>User</option>
                                 </select>
 
 

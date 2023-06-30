@@ -19,7 +19,7 @@
                         <div class="x_content">
 
                             <!-- start form for validation -->
-                            <form method="post" action="{{ route('chapters.update', $chapters->story_id) }}" id="demo-form"
+                            <form method="post" action="{{ route('chapters.update', $chapters->id) }}" id="demo-form"
                                 data-parsley-validate enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
