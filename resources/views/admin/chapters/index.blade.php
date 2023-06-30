@@ -10,9 +10,11 @@
                 <h2>KeyTable example <small>The story has chapters</small></h2>
 
                 <ul class="nav navbar-right panel_toolbox">
-                    <a type="button" href="{{ URL::route('chapters.create') }}" class="btn btn-secondary">
-                        Create
-                    </a>
+                    @can('create-chapter')
+                        <a type="button" href="{{ URL::route('chapters.create') }}" class="btn btn-secondary">
+                            Create
+                        </a>
+                    @endcan
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     <li class="dropdown">
@@ -61,18 +63,20 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if (isset($stories))
-                                                    {{ $chapters->where('story_id', $chapter->story_id)->count('number_chaper') }}
+                                                @if ($chapter->stories)
+                                                    {{ $chapter->stories->sum_chapter }}
                                                 @else
                                                     N/A
                                                 @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('chapters.show', $chapter->story_id) }}">
-                                                        <i class="fas fa-eye"></i> View
-                                                    </a>
+                                                    @can('show-chapter')
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('chapters.show', $chapter->story_id) }}">
+                                                            <i class="fas fa-eye"></i> View
+                                                        </a>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>

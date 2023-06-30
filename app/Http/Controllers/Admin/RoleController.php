@@ -7,7 +7,8 @@ use App\Http\Requests\Role\CreateRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
 
 
-use App\Models\Permisson;
+use App\Models\Permission;
+use App\Models\Permissions;
 use App\Models\Role;
 use App\Models\Role_Permission;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permisson::all()->groupBy('group');
+        $permissions = Permission::all()->groupBy('group');
         return view('admin.roles.create', compact('permissions'));
     }
 
@@ -47,7 +48,6 @@ class RoleController extends Controller
     {
         $dataCreate = $request->all();
         $role = Role::create($dataCreate);
-        // dd($role->toArray());
 
         $role->permissions()->attach($dataCreate['permission_ids']);
         return redirect()->route('roles.index')->with(['massage' => 'Create suceess']);
@@ -73,9 +73,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        $permissions = Permisson::all()->groupBy('group');
-        $role_permissions = Role_Permission::all();
-        return view('admin.roles.edit', compact('role', 'permissions', 'role_permissions'));
+        $permissions = Permission::all()->groupBy('group');
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**

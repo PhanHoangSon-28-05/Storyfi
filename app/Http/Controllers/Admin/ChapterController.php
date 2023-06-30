@@ -5,21 +5,32 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Chapter;
 use App\Models\Story;
+use App\Repositories\Chapter\ChapterRepositoryInterface;
+use App\Repositories\Story\StoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ChapterController extends Controller
 {
+    protected $chapterRepo;
+    protected $storyRepo;
+
+    public function __construct(ChapterRepositoryInterface $chapterRepo, StoryRepositoryInterface $storyRepo)
+    {
+        $this->chapterRepo = $chapterRepo;
+        $this->storyRepo = $storyRepo;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    // $stories = Story::whereHas('users')->get();
+    // dd($stories->pluck('id')->toArray());
+    // $chapters = Chapter::all();
     public function index()
     {
-        $stories = Story::whereHas('users')->get();
-        dd($stories->pluck('id')->toArray());
-        $chapters = Chapter::all();
-        return view('admin.chapters.index', compact('chapters', 'stories'));
+        $chapters = $this->chapterRepo->getChapter();
+        return view('admin.chapters.index', compact('chapters'));
     }
 
     /**
@@ -31,7 +42,7 @@ class ChapterController extends Controller
     public function show($id)
     {
         // dd($id);
-        $chapters = Chapter::where('story_id', $id)->get();
+        $chapters = $this->chapterRepo->findChapter($id);
         $storyId = $id;
         return view('admin.chapters.show', compact('chapters', 'storyId'));
     }
@@ -42,7 +53,7 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        $stories = Story::get();
+        $stories = $this->storyRepo->getAll();
         return view('admin.chapters.create', compact('stories'));
     }
 
@@ -55,7 +66,8 @@ class ChapterController extends Controller
     public function store(Request $request)
     {
         $dataCreate = $request->all();
-        $chapters = Chapter::create($dataCreate);
+
+        $chapters =  $this->chapterRepo->CreateChapter($dataCreate);
 
         return redirect()->route('chapters.index')->with('message', 'Create success');
     }
@@ -69,7 +81,10 @@ class ChapterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chapters = $this->chapterRepo->findChapterEdit($id);
+        $stories = $this->storyRepo->getAll();
+        // dd($chapters->toArray());
+        return view('admin.chapters.edit', compact('chapters', 'stories'));
     }
 
     /**
@@ -81,7 +96,12 @@ class ChapterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataUpdate = $request->all();
+
+        // dd($dataUpdate);
+        $chapters = $this->chapterRepo->update($id, $dataUpdate);
+
+        return redirect()->route('chapters.index')->with(['messager' => 'Update sucsse']);
     }
 
     /**
@@ -92,6 +112,10 @@ class ChapterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $chapters = $this->chapterRepo->delete($id);
+
+        return response()->json([
+            'message' => 'Chapter deteled successfully '
+        ]);
     }
 }

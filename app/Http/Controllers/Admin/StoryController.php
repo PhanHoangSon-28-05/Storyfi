@@ -7,10 +7,17 @@ use App\Models\Category;
 use App\Models\Status;
 use App\Models\Story;
 use App\Models\Title;
+use App\Repositories\Story\StoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class StoryController extends Controller
 {
+    protected $storyRepo;
+
+    public function __construct(StoryRepositoryInterface $storyRepo)
+    {
+        $this->storyRepo = $storyRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +25,10 @@ class StoryController extends Controller
      */
     public function index()
     {
-        $stories = Story::whereHas('users')->get();
-        $titles = Title::all();
-        return view('admin.stories.index', compact('stories', 'titles'));
+        // $stories = Story::whereHas('users')->get();
+        // $titles = Title::all();
+        $stories = $this->storyRepo->getStory();
+        return view('admin.stories.index', compact('stories'));
     }
 
     /**
@@ -50,8 +58,9 @@ class StoryController extends Controller
         $story->categories()->attach($dataCreate['categories_ids']);
 
         if (auth()->check()) {
-            $story->users()->attach(auth()->user()->id);
+            $story->users()->attach(auth()->user()->id, ['point' => $dataCreate['point'] ?? 0]);
         }
+
 
 
         return redirect()->route('stories.index')->with('message', 'Create success');

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('name_other');
             $table->string('summary', 2000);
+            $table->integer('sum_chapter');
             $table->integer('view');
             $table->foreignId('title_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

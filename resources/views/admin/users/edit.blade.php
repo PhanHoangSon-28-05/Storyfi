@@ -43,7 +43,7 @@
                                     class="form-control" name="birthday" />
                                 @error('birthday')
                                     <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
+                                @enderror   
 
                                 <label style="font-weight: bold;" for="exampleFormControlSelect1"
                                     class="ms-0">Gender</label>

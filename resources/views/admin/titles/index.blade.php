@@ -56,12 +56,17 @@
                                             <td>{{ $title->name }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('titles.edit', $title->id) }}"><i
-                                                            class="fas fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item delete-title"
-                                                        onclick="confirmDelete({{ $title->id }})"><i
-                                                            class="fas fa-trash-alt"></i> Delete</a>
+                                                    @can('update-title')
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('titles.edit', $title->id) }}"><i
+                                                                class="fas fa-edit"></i> Edit</a>
+                                                    @endcan
+
+                                                    @can('delete-title')
+                                                        <a class="dropdown-item delete-title"
+                                                            onclick="confirmDelete({{ $title->id }})"><i
+                                                                class="fas fa-trash-alt"></i> Delete</a>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>

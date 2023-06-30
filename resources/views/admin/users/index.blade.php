@@ -49,7 +49,9 @@
                                         <th>gender</th>
                                         <th>phone</th>
                                         <th>point</th>
-                                        <th>Action</th>
+                                        @hasrole('super-admin')
+                                            <th>Action</th>
+                                        @endhasrole
                                     </tr>
                                 </thead>
 
@@ -66,11 +68,13 @@
                                             <td>{{ $user->point }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}"><i
-                                                            class="fas fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item delete-user"
-                                                        data-user-id="{{ $user->id }}"><i class="fas fa-trash-alt"></i>
-                                                        Delete</a>
+                                                    @hasrole('super-admin')
+                                                        <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}"><i
+                                                                class="fas fa-edit"></i> Edit</a>
+                                                        <a class="dropdown-item delete-user"
+                                                            data-user-id="{{ $user->id }}"><i class="fas fa-trash-alt"></i>
+                                                            Delete</a>
+                                                    @endhasrole
                                                 </div>
                                             </td>
                                         </tr>

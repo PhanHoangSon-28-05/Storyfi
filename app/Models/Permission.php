@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\Permission\Models\Role as ModelsRole;
+use Spatie\Permission\Models\Permission as ModelsPermission;
 
-class Role extends ModelsRole
+class Permission extends ModelsPermission
 {
     use HasFactory;
 
@@ -19,8 +18,8 @@ class Role extends ModelsRole
 
     protected static function booted()
     {
-        static::creating(function ($roles) {
-            $roles->guard_name = 'web';
+        static::creating(function ($permissions) {
+            $permissions->guard_name = 'web';
         });
     }
 }

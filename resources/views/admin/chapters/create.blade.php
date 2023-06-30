@@ -23,20 +23,20 @@
                                 enctype="multipart/form-data">
                                 @csrf
 
-                                <label style="font-weight: bold;" for="number_chaper">Number chapter * :</label>
-                                <input type="text" value="{{ old('number_chaper') }}" id="number_chaper"
-                                    class="form-control" name="number_chaper" />
-                                @error('number_chaper')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
                                 <label style="font-weight: bold;" for="name">Story</label>
                                 <select name="story_id" class="form-control">
-                                    @foreach ($stories as $story)
-                                        <option value="{{ $story->id }}">{{ $story->name }}</option>
+                                    @foreach ($stories as $storie)
+                                        <option value="{{ $storie->id }}">{{ $storie->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('group')
+                                    <span class="text-danger">{{ $message }}</span><br>
+                                @enderror
+
+                                <label style="font-weight: bold;" for="number_chapter">Number chapter * :</label>
+                                <input type="text" value="{{ old('number_chapter') }}" id="number_chapter"
+                                    class="form-control" name="number_chapter" />
+                                @error('number_chapter')
                                     <span class="text-danger">{{ $message }}</span><br>
                                 @enderror
 

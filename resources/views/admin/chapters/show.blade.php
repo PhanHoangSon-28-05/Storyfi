@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Chaper')
+@section('title', 'chapter')
 @section('content')
     <div class="col-md-12 col-sm-12 ">
         @if (session('massage'))
@@ -7,12 +7,14 @@
         @endif
         <div class="x_panel">
             <div class="x_title">
-                <h2>KeyTable example <small>Chaper</small></h2>
+                <h2>KeyTable example <small>chapter</small></h2>
 
                 <ul class="nav navbar-right panel_toolbox">
-                    <a type="button" href="{{ URL::route('chapters.create') }}" class="btn btn-secondary">
-                        Create
-                    </a>
+                    @can('create-chapter')
+                        <a type="button" href="{{ URL::route('chapters.create') }}" class="btn btn-secondary">
+                            Create
+                        </a>
+                    @endcan
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     <li class="dropdown">
@@ -52,16 +54,21 @@
                                 <tbody>
                                     @foreach ($chapters as $chapter)
                                         <tr>
-                                            <td>{{ $chapter->number_chaper }}</td>
+                                            <td>{{ $chapter->number_chapter }}</td>
                                             <td>{{ $chapter->name }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('chapters.edit', $chapter->number_chaper, $chapter->story_id) }}"><i
-                                                            class="fas fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item delete-chapter"
-                                                        onclick="confirmDelete({{ $chapter->number_chaper }})"><i
-                                                            class="fas fa-trash-alt"></i> Delete</a>
+                                                    @can('update-chapter')
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('chapters.edit', $chapter->number_chapter, $chapter->story_id) }}"><i
+                                                                class="fas fa-edit"></i> Edit</a>
+                                                    @endcan
+
+                                                    @can('delete-chapter')
+                                                        <a class="dropdown-item delete-chapter"
+                                                            onclick="confirmDelete({{ $chapter->number_chapter }})"><i
+                                                                class="fas fa-trash-alt"></i> Delete</a>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>

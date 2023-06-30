@@ -62,7 +62,7 @@
                                                         <div class="form-check form-check-inline">
                                                             <input name="permission_ids[]" class="form-check-input"
                                                                 type="checkbox" value="{{ $item->id }}"
-                                                                {{ $role_permissions->contains('permission_id', $item->id) ? 'checked' : '' }}
+                                                                {{ $role->permissions->contains('name', $item->name) ? 'checked' : '' }}
                                                                 id="{{ $item->id }}">
 
                                                             <label style="font-weight: bold;" class="form-check-label"

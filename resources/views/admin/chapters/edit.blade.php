@@ -19,44 +19,29 @@
                         <div class="x_content">
 
                             <!-- start form for validation -->
-                            <form method="post" action="{{ route('chapters.update', $chapters->id) }}" id="demo-form"
+                            <form method="post" action="{{ route('chapters.update', $chapters->story_id) }}" id="demo-form"
                                 data-parsley-validate enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
+                                <h3 style="font-weight: bold;" for="name">{{ $chapters->stories->name }}</h3>
+
+                                <label style="font-weight: bold;" for="number_chapter">Number chapter * :</label>
+                                <input type="text" value="{{ old('number_chapter') ?? $chapters->number_chapter }}"
+                                    id="number_chapter" class="form-control" name="number_chapter" />
+                                @error('number_chapter')
+                                    <span class="text-danger">{{ $message }}</span><br>
+                                @enderror
+
                                 <label style="font-weight: bold;" for="name">Name * :</label>
-                                <input type="text" value="{{ old('name') ?? $titles->name }}" id="fulename"
+                                <input type="text" value="{{ old('name') ?? $chapters->name }}" id="name"
                                     class="form-control" name="name" />
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span><br>
                                 @enderror
 
-                                <label style="font-weight: bold;" for="number_chaper">Number chapter * :</label>
-                                <input type="text" value="{{ old('number_chaper') ?? $chapters->number_chaper }}"
-                                    id="number_chaper" class="form-control" name="number_chaper" />
-                                @error('number_chaper')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
-                                <label style="font-weight: bold;" for="name">Story</label>
-                                <select name="story_id" class="form-control">
-                                    @foreach ($stories as $story)
-                                        <option value="{{ $story->id }}">{{ $story->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('group')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
-                                <label style="font-weight: bold;" for="name">Name * :</label>
-                                <input type="text" value="{{ old('name') }}" id="name" class="form-control"
-                                    name="name" />
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
                                 <label style="font-weight: bold;" for="content">Content * :</label>
-                                <textarea value="" id="content" class="form-control" name="content" rows="12">{{ old('content') }}</textarea>
+                                <textarea value="" id="content" class="form-control" name="content" rows="12">{{ old('content') ?? $chapters->content }}</textarea>
                                 @error('content')
                                     <span class="text-danger">{{ $message }}</span><br>
                                 @enderror

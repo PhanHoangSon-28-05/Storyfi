@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('user_stories', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('story_id')->constrained('stories')->cascadeOnDelete();
+            $table->integer('point');
             $table->timestamps();
         });
     }

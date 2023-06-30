@@ -62,12 +62,16 @@
                                             <td>{{ $story->titles->name }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('stories.edit', $story->id) }}"><i
-                                                            class="fas fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item delete-story"
-                                                        onclick="confirmDelete({{ $story->id }})"><i
-                                                            class="fas fa-trash-alt"></i> Delete</a>
+                                                    @can('update-story')
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('stories.edit', $story->id) }}"><i
+                                                                class="fas fa-edit"></i> Edit</a>
+                                                    @endcan
+                                                    @can('delete-story')
+                                                        <a class="dropdown-item delete-story"
+                                                            onclick="confirmDelete({{ $story->id }})"><i
+                                                                class="fas fa-trash-alt"></i> Delete</a>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>

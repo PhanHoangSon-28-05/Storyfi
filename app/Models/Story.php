@@ -18,6 +18,7 @@ class Story extends Model
     {
         static::creating(function ($story) {
             $story->view = 0;
+            $story->sum_chapter = 0;
         });
     }
 
@@ -33,6 +34,6 @@ class Story extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_stories',  'story_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_stories', 'story_id', 'user_id')->withPivot('point');
     }
 }
