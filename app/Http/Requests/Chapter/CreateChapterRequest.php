@@ -13,7 +13,7 @@ class CreateChapterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class CreateChapterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'number_chapter' => 'required',
+            'name' => 'required',
+            'content' => 'required',
         ];
     }
 }

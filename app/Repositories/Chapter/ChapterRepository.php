@@ -32,6 +32,13 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
         return $storys;
     }
 
+    public function getStory($id)
+    {
+        $story = Story::where('id', $id)->first();
+
+        return $story;
+    }
+
     public function findChapter($story_id)
     {
         $result = $this->model->where('story_id', $story_id)->get();

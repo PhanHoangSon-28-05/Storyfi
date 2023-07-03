@@ -23,7 +23,7 @@
                                 data-parsley-validate enctype="multipart/form-data">
                                 @csrf
 
-                                <label style="font-weight: bold;" for="name">Name * :</label>
+                                <label style="font-weight: bold; font-size:15px;" for="name">Name * :</label>
                                 <input type="text" value="{{ old('name') }}" id="name" class="form-control"
                                     name="name" />
                                 @error('name')

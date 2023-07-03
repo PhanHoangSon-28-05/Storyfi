@@ -22,53 +22,81 @@
                             <form method="post" action="{{ route('roles.store') }}" id="demo-form" data-parsley-validate>
                                 @csrf
 
-                                <label style="font-weight: bold;" for="name">Name * :</label>
-                                <input type="text" value="{{ old('name') }}" id="name" class="form-control"
-                                    name="name" />
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="name"
+                                        style="font-weight: bold; font-size:15px;">Name
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
+                                            value="{{ old('name') }}" name="name" id="name"
+                                            placeholder="super-admin" required="required" />
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                                <label style="font-weight: bold;" for="display_name">Display Name * :</label>
-                                <input type="text" value="{{ old('display_name') }}" id="display_name"
-                                    class="form-control" name="display_name" />
-                                @error('display_name')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="display_name"
+                                        style="font-weight: bold; font-size:15px;">Display Name
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
+                                            value="{{ old('display_name') }}" name="display_name" id="display_name"
+                                            placeholder="...." required="required" />
+                                        @error('display_name')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                                <label style="font-weight: bold;" for="exampleFormControlSelect1"
-                                    class="ms-0">Group</label>
-                                <select name="group" class="form-control">
-                                    <option value="system">System</option>
-                                    <option value="user">User</option>
-                                </select>
-
-
-                                @error('group')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
-
-                                <label style="font-weight: bold;" for="permission">Permission</label>
-                                <div class="row">
-                                    @foreach ($permissions as $groupName => $permission)
-                                        <div class="col-md-6">
-                                            <h4>{{ $groupName }}</h4>
-                                            <div class="row">
-                                                @foreach ($permission as $item)
-                                                    <div class="col-md-6">
-                                                        <div class="form-check form-check-inline">
-                                                            <input name="permission_ids[]" class="form-check-input"
-                                                                type="checkbox" value="{{ $item->id }}"
-                                                                id="{{ $item->id }}">
-                                                            <label style="font-weight: bold;" class="form-check-label"
-                                                                for="{{ $item->id }}">{{ $item->display_name }}</label>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-sm-2 label-align"
+                                        style="font-weight: bold; font-size:15px;">Group
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <div id="group" class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-secondary" data-toggle-class="btn-primary"
+                                                data-toggle-passive-class="btn-default">
+                                                <input type="radio" name="group" value="system" class="join-btn">
+                                                &nbsp; System &nbsp;
+                                            </label>
+                                            <label class="btn btn-primary" data-toggle-class="btn-primary"
+                                                data-toggle-passive-class="btn-default">
+                                                <input type="radio" name="group" value="user" class="join-btn">
+                                                User
+                                            </label>
                                         </div>
-                                    @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="permission"
+                                        style="font-weight: bold; font-size:15px; ">Permission
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-6 col-sm-6" style="margin-top: 8px;">
+                                        <div class="row">
+                                            @foreach ($permissions as $groupName => $permission)
+                                                <div class="col-md-6">
+                                                    <h4>{{ $groupName }}</h4>
+                                                    <div class="row">
+                                                        @foreach ($permission as $item)
+                                                            <div class="col-md-8">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input name="permission_ids[]" class="form-check-input"
+                                                                        type="checkbox" value="{{ $item->id }}"
+                                                                        id="{{ $item->id }}">
+                                                                    <label style="font-weight: bold; font-size:13px;"
+                                                                        class="form-check-label"
+                                                                        for="{{ $item->id }}">{{ $item->display_name }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
                                 <br />
                                 <button type="submit" class="btn btn-primary">ADD</button>

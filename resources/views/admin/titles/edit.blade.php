@@ -24,7 +24,7 @@
                                 @csrf
                                 @method('PUT')
 
-                                <label style="font-weight: bold;" for="name">Name * :</label>
+                                <label style="font-weight: bold; font-size:15px;" for="name">Name * :</label>
                                 <input type="text" value="{{ old('name') ?? $titles->name }}" id="fulename"
                                     class="form-control" name="name" />
                                 @error('name')

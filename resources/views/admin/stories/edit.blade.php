@@ -24,64 +24,96 @@
                                 @csrf
                                 @method('PUT')
 
-                                <label style="font-weight: bold;" for="name">Name * :</label>
-                                <input type="text" value="{{ old('name') ?? $stories->name }}" id="fulename"
-                                    class="form-control" name="name" />
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
-                                <label style="font-weight: bold;" for="name_other">Name Other * :</label>
-                                <input type="text" value="{{ old('name_other') ?? $stories->name_other }}"
-                                    id="name_other" class="form-control" name="name_other" />
-                                @error('name_other')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
-                                <label style="font-weight: bold;" for="summary">Summary * :</label>
-                                <textarea value="" id="summary" class="form-control"rows="6" name="summary">{{ old('summary') ?? $stories->summary }}</textarea>
-                                @error('summary')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
-
-                                <label style="font-weight: bold;" for="exampleFormControlSelect1" class="ms-0">Title:
-                                </label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        @foreach ($titles as $title)
-                                            <div class="col-md-6">
-                                                <div class="form-check form-check-inline">
-                                                    <input name="title_id" class="form-check-input" type="radio"
-                                                        value="{{ $title->id }}"
-                                                        {{ $stories->title_id = $title->id ? 'checked' : '' }}
-                                                        id="{{ $title->id }}">
-                                                    <label style="font-weight: bold;" class="form-check-label"
-                                                        for="{{ $title->id }}">{{ $title->name }}</label>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="name"
+                                        style="font-weight: bold; font-size:15px;">Name
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-9 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
+                                            value="{{ old('name') ?? $stories->name }}" name="name" id="name"
+                                            placeholder="...." required="required" />
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
                                     </div>
                                 </div>
 
-
-                                <label style="font-weight: bold;" for="exampleFormControlSelect1" class="ms-0">Category:
-                                </label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        @foreach ($categories as $category)
-                                            <div class="col-md-6">
-                                                <div class="form-check form-check-inline">
-                                                    <input name="categories_ids[]" class="form-check-input" type="checkbox"
-                                                        value="{{ $category->id }}"
-                                                        {{ $stories->categories->contains('name', $category->name) ? 'checked' : '' }}
-                                                        id="{{ $category->id }}">
-                                                    <label style="font-weight: bold;" class="form-check-label"
-                                                        for="{{ $category->id }}">{{ $category->name }}</label>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="name_other"
+                                        style="font-weight: bold; font-size:15px;">Name other
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-9 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
+                                            value="{{ old('name_other') ?? $stories->name_other }}" name="name_other"
+                                            id="name_other" placeholder="...." required="required" />
+                                        @error('name_other')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
                                     </div>
                                 </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="summary"
+                                        style="font-weight: bold; font-size:15px;">Summary
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-9 col-sm-6">
+                                        <textarea value="" id="editor" class="form-control" name="summary" rows="12" style="color: black;">{{ old('summary') ?? $stories->summary }}</textarea>
+                                        @error('summary')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="title"
+                                        style="font-weight: bold; font-size:15px;">Title
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-8 col-sm-6" style="margin-top:10px">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                @foreach ($titles as $title)
+                                                    <div class="col-md-6">
+                                                        <div class="form-check form-check-inline">
+                                                            <input name="title_id" class="form-check-input" type="radio"
+                                                                value="{{ $title->id }}"
+                                                                {{ $stories->title_id = $title->id ? 'checked' : '' }}
+                                                                id="{{ $title->id }}">
+                                                            <label style="font-weight: bold; font-size:15px;"
+                                                                class="form-check-label"
+                                                                for="{{ $title->id }}">{{ $title->name }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="title"
+                                        style="font-weight: bold; font-size:15px;">Category
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-8 col-sm-6" style="margin-top:10px">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                @foreach ($categories as $category)
+                                                    <div class="col-md-6">
+                                                        <div class="form-check form-check-inline">
+                                                            <input name="categories_ids[]" class="form-check-input"
+                                                                type="checkbox" value="{{ $category->id }}"
+                                                                {{ $stories->categories->contains('name', $category->name) ? 'checked' : '' }}
+                                                                id="{{ $category->id }}">
+                                                            <label style="font-weight: bold; font-size:15px;"
+                                                                class="form-check-label"
+                                                                for="{{ $category->id }}">{{ $category->name }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <br />
                                 <button type="submit" class="btn btn-primary">ADD</button>
 
@@ -94,4 +126,14 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

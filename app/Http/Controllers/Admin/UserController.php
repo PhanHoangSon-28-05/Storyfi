@@ -52,9 +52,8 @@ class UserController extends Controller
     {
         $dataCreate = $request->all();
         $dataCreate['password'] = Hash::make($request->password);
-
         $user = $this->user->create($dataCreate);
-        $user->roles()->sync($dataCreate['role_ids']);
+        $user->roles()->attach($dataCreate['role_ids']);
 
         return redirect()->route('users.index')->with('message', 'create success');
     }

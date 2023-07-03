@@ -42,6 +42,7 @@
                                         <th>#</th>
                                         <th>Position</th>
                                         <th>Display Name</th>
+                                        <th>Group</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -51,13 +52,19 @@
                                             <td>{{ $role->id }}</td>
                                             <td>{{ $role->name }}</td>
                                             <td>{{ $role->display_name }}</td>
+                                            <td>{{ $role->group }}</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a class="dropdown-item" href="{{ route('roles.edit', $role->id) }}"><i
                                                             class="fas fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item delete-role"
-                                                        data-role-id="{{ $role->id }}"><i class="fas fa-trash-alt"></i>
-                                                        Delete</a>
+                                                    @if ($role->name == 'super-admin')
+                                                    @else
+                                                        <a class="dropdown-item delete-role"
+                                                            data-role-id="{{ $role->id }}"><i
+                                                                class="fas fa-trash-alt"></i>
+                                                            Delete</a>
+                                                    @endif
+
                                                 </div>
                                             </td>
                                         </tr>

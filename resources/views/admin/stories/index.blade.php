@@ -44,7 +44,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Name other</th>
+                                        <th>Total chapters</th>
                                         <th>View</th>
                                         <th>Title</th>
                                         <th>Action</th>
@@ -57,7 +57,7 @@
                                         <tr>
                                             <td>{{ $story->id }}</td>
                                             <td>{{ $story->name }}</td>
-                                            <td>{{ $story->name_other }}</td>
+                                            <td>{{ $story->sum_chapter }}</td>
                                             <td>{{ $story->view }}</td>
                                             <td>{{ $story->titles->name }}</td>
                                             <td>
@@ -66,6 +66,12 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('stories.edit', $story->id) }}"><i
                                                                 class="fas fa-edit"></i> Edit</a>
+                                                    @endcan
+                                                    @can('show-chapter')
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('chapters.show', $story->id) }}">
+                                                            <i class="fas fa-eye"></i> View
+                                                        </a>
                                                     @endcan
                                                     @can('delete-story')
                                                         <a class="dropdown-item delete-story"

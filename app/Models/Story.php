@@ -12,7 +12,12 @@ class Story extends Model
 
     protected $table = 'stories';
 
-    protected $fillable = ['name', 'name_other', 'summary', 'title_id'];
+    protected $fillable = [
+        'name',
+        'name_other',
+        'summary',
+        'title_id'
+    ];
 
     protected static function booted()
     {

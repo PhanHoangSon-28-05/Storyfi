@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Chapter;
+namespace App\Http\Requests\Story;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateChapterRequest extends FormRequest
+class CreateStotryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class UpdateChapterRequest extends FormRequest
     public function rules()
     {
         return [
-            'number_chapter' => 'required',
             'name' => 'required',
-            'content' => 'required',
+            'name_other' => 'required',
+            'summary' => 'required',
+            'title_id' => 'required',
         ];
     }
 }

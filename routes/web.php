@@ -104,9 +104,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/{coupon}/edit', 'edit')->name('edit')->middleware('permission:update-story');
     });
     Route::prefix('chapters')->controller(ChapterController::class)->name('chapters.')->group(function () {
-        Route::get('/', 'index')->name('index')->middleware('permission:show-chapter');
-        Route::post('/', 'store')->name('store')->middleware('permission:create-chapter');;
-        Route::get('/create', 'create')->name('create')->middleware('permission:create-chapter');
+        Route::post('/', 'store')->name('store')->middleware('permission:create-chapter');
+        Route::get('/create/{id}', 'create')->name('create')->middleware('permission:create-chapter');
         Route::get('/{coupon}', 'show')->name('show')->middleware('permission:show-chapter');
         Route::put('/{coupon}', 'update')->name('update')->middleware('permission:update-chapter');
         Route::delete('/{coupon}', 'destroy')->name('destroy')->middleware('permission:delete-chapter');

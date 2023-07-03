@@ -43,13 +43,6 @@
                     </ul>
                 </li>
             @endcan
-            @can('show-chapter')
-                <li><a><i class="fa fa-home"></i> Chapter <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="{{ URL::route('chapters.index') }}">List Chapter</a></li>
-                    </ul>
-                </li>
-            @endcan
         </ul>
     </div>
 </div>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Story;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatCategoryRequest extends FormRequest
+class UpdateStotryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CreatCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class CreatCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'name_other' => 'required',
+            'summary' => 'required',
+            'title_id' => 'required',
         ];
     }
 }

@@ -11,7 +11,7 @@
 
                 <ul class="nav navbar-right panel_toolbox">
                     @can('create-chapter')
-                        <a type="button" href="{{ URL::route('chapters.create') }}" class="btn btn-secondary">
+                        <a type="button" href="{{ URL::route('chapters.create', $storyId) }}" class="btn btn-secondary">
                             Create
                         </a>
                     @endcan

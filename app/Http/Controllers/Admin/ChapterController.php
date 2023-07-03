@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Chapter\CreateChapterRequest;
+use App\Http\Requests\Chapter\UpdateChapterRequest;
 use App\Models\Chapter;
 use App\Models\Story;
 use App\Repositories\Chapter\ChapterRepositoryInterface;
@@ -51,9 +53,11 @@ class ChapterController extends Controller
      * Show the form for creating a new resource.
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $stories = $this->storyRepo->getStory();
+        $stories = $this->chapterRepo->getStory($id);
+        // dd($story_id);
+
         return view('admin.chapters.create', compact('stories'));
     }
 
@@ -63,13 +67,14 @@ class ChapterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateChapterRequest $request)
     {
         $dataCreate = $request->all();
+        // dd($dataCreate);
 
         $chapters =  $this->chapterRepo->CreateChapter($dataCreate);
 
-        return redirect()->route('chapters.index')->with('message', 'Create success');
+        return redirect()->route('stories.index')->with('message', 'Create success');
     }
 
 
@@ -82,9 +87,9 @@ class ChapterController extends Controller
     public function edit($id)
     {
         $chapters = $this->chapterRepo->findChapterEdit($id);
-        $stories = $this->storyRepo->getAll();
+        // $stories = $this->storyRepo->getAll();
         // dd($chapters->toArray());
-        return view('admin.chapters.edit', compact('chapters', 'stories'));
+        return view('admin.chapters.edit', compact('chapters'));
     }
 
     /**
@@ -94,14 +99,14 @@ class ChapterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateChapterRequest $request, $id)
     {
         $dataUpdate = $request->all();
 
         // dd($dataUpdate);
         $chapters = $this->chapterRepo->update($id, $dataUpdate);
 
-        return redirect()->route('chapters.index')->with(['messager' => 'Update sucsse']);
+        return redirect()->route('stories.index')->with(['messager' => 'Update sucsse']);
     }
 
     /**

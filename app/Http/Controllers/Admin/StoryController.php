@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Story\CreateStotryRequest;
+use App\Http\Requests\Story\UpdateStotryRequest;
 use App\Models\Category;
 use App\Models\Status;
 use App\Models\Story;
@@ -49,7 +51,7 @@ class StoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateStotryRequest $request)
     {
         $dataCreate = $request->all();
         $story = Story::create($dataCreate);
@@ -100,7 +102,7 @@ class StoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateStotryRequest $request, $id)
     {
         $stories = Story::findOrFail($id);
         $dataUpdate = $request->all();

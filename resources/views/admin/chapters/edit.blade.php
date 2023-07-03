@@ -24,27 +24,54 @@
                                 @csrf
                                 @method('PUT')
 
-                                <h3 style="font-weight: bold;" for="name">{{ $chapters->stories->name }}</h3>
+                                <div class="field item form-group">
+                                    <input class="form-control" type="text" value="{{ $chapters->story_id }}"
+                                        name="story_id" style="display: none;">
+                                    <label class="col-form-label col-sm-10 label-align" for="name"
+                                        style="font-weight: bold; font-size:20px;">{{ $chapters->stories->name }}
+                                    </label>
+                                </div>
 
-                                <label style="font-weight: bold;" for="number_chapter">Number chapter * :</label>
-                                <input type="text" value="{{ old('number_chapter') ?? $chapters->number_chapter }}"
-                                    id="number_chapter" class="form-control" name="number_chapter" />
-                                @error('number_chapter')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="number_chapter"
+                                        style="font-weight: bold; font-size:15px;">Number chapter
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-9 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
+                                            value="{{ old('number_chapter') ?? $chapters->number_chapter }}"
+                                            name="number_chapter" id="number_chapter" placeholder="Chương 1"
+                                            required="required" />
+                                        @error('number_chapter')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                                <label style="font-weight: bold;" for="name">Name * :</label>
-                                <input type="text" value="{{ old('name') ?? $chapters->name }}" id="name"
-                                    class="form-control" name="name" />
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="name"
+                                        style="font-weight: bold; font-size:15px;">Name
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-9 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
+                                            value="{{ old('name') ?? $chapters->name }}" name="name" id="name"
+                                            placeholder="....." required="required" />
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                                <label style="font-weight: bold;" for="content">Content * :</label>
-                                <textarea value="" id="content" class="form-control" name="content" rows="12">{{ old('content') ?? $chapters->content }}</textarea>
-                                @error('content')
-                                    <span class="text-danger">{{ $message }}</span><br>
-                                @enderror
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-sm-2 label-align" for="content"
+                                        style="font-weight: bold; font-size:15px;">Content
+                                        <span class="required" style="color: red;">*</span></label>
+                                    <div class="col-md-9 col-sm-6">
+                                        <textarea value="" id="editor" class="form-control" name="content" rows="12">{{ old('summary') ?? $chapters->content }}</textarea>
+                                        @error('content')
+                                            <span class="text-danger">{{ $message }}</span><br>
+                                        @enderror
+                                    </div>
+                                </div>
 
                                 <br />
                                 <button type="submit" class="btn btn-primary">ADD</button>
@@ -58,4 +85,14 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection
