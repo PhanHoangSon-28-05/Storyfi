@@ -18,7 +18,9 @@ return new class extends Migration
             $table->foreignId('story_id')->constrained()->cascadeOnDelete();
             $table->string('number_chapter');
             $table->string('name');
-            $table->text('content');
+            $table->string('sumary', 4000)->unique();
+            $table->longText('content')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }

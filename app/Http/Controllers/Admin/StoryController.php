@@ -11,6 +11,8 @@ use App\Models\Story;
 use App\Models\Title;
 use App\Repositories\Story\StoryRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class StoryController extends Controller
 {
@@ -54,16 +56,19 @@ class StoryController extends Controller
     public function store(CreateStotryRequest $request)
     {
         $dataCreate = $request->all();
+        //dd($dataCreate);
+        $path = $request->file('image')->store('public/images');
+        $dataCreate['image'] = str_replace('public/images/', '', $path);
+        $dataCreate['slug'] = Str::slug($dataCreate['name']);
         $story = Story::create($dataCreate);
 
         // dd($story->toArray());
         $story->categories()->attach($dataCreate['categories_ids']);
 
         if (auth()->check()) {
-            $story->users()->attach(auth()->user()->id, ['point' => $dataCreate['point'] ?? 0]);
+            // dd($dataCreate['status']);
+            $story->users()->attach(auth()->user()->id, ['status' => $dataCreate['status'] ?? 0, 'point' => $dataCreate['point'] ?? 0]);
         }
-
-
 
         return redirect()->route('stories.index')->with('message', 'Create success');
     }
@@ -89,6 +94,7 @@ class StoryController extends Controller
     public function edit($id)
     {
         $stories = Story::with('categories')->findOrFail($id);
+        // dd($stories);
         $titles = Title::all();
         $categories = Category::all();
 
@@ -106,10 +112,15 @@ class StoryController extends Controller
     {
         $stories = Story::findOrFail($id);
         $dataUpdate = $request->all();
+        $dataUpdate['slug'] = Str::slug($dataUpdate['name']);
+        if ($dataUpdate['method'] == '1') {
+            $dataUpdate['content'] == null;
+        }
+        // dd($dataUpdate);
         $stories->update($dataUpdate);
 
         $stories->categories()->sync($dataUpdate['categories_ids']);
-
+        $stories->users()->updateExistingPivot(auth()->user()->id, ['status' => $dataCreate['status'] ?? 0]);
         return redirect()->route('stories.index')->with(['messager' => 'Update success']);
     }
 

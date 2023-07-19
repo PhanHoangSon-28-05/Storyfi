@@ -2,7 +2,7 @@
 @section('title', 'Create Roles')
 @section('content')
     <div class="right_col" role="main">
-        <div class="">
+        <div class="row">
             <div class="page-title">
                 <div class="title_left">
                     <h3>Create Role</h3>
@@ -11,11 +11,7 @@
             <div class="clearfix"></div>
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Create Role</h2>
-                            <div class="clearfix"></div>
-                        </div>
+                    <div class="">
                         <div class="x_content">
 
                             <!-- start form for validation -->
@@ -28,7 +24,7 @@
                                         <span class="required" style="color: red;">*</span></label>
                                     <div class="col-md-6 col-sm-6">
                                         <input class="form-control" data-validate-length-range="6" data-validate-words="2"
-                                            value="{{ old('name') }}" name="name" id="name"
+                                            value="{{ old('name') }}" name="name" id="name" type="text"
                                             placeholder="super-admin" required="required" />
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span><br>
@@ -43,7 +39,7 @@
                                     <div class="col-md-6 col-sm-6">
                                         <input class="form-control" data-validate-length-range="6" data-validate-words="2"
                                             value="{{ old('display_name') }}" name="display_name" id="display_name"
-                                            placeholder="...." required="required" />
+                                            placeholder="...." required="required" type="text" />
                                         @error('display_name')
                                             <span class="text-danger">{{ $message }}</span><br>
                                         @enderror

@@ -1,0 +1,304 @@
+body{
+    background-color: rgb(219,219,224);
+    overflow-x: hidden;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+header .sign-out a:hover {
+    color: red;
+}
+
+page-body nav{
+    background-color: rgb(254, 253, 255);
+}
+
+page-body nav .dropdown{
+    background-color: rgb(254, 253, 255);
+    padding-right: 80px;
+}
+
+.other-categories .nav-event a {
+    margin-top: -8px;
+    margin-bottom: -8px;
+    color: #fff;
+    text-decoration: none;
+    border-top: 3px solid transparent;
+    transition: border-color .5s;
+}
+
+.other-categories .nav-item a:hover {
+    color: red;
+    border-color: red; /* Màu đỏ cho đường viền trên */
+}
+
+.dropdown-menu.b{
+    width: 850px;
+}
+
+.dropdown-menu.b li{
+    width: 115px;
+}
+.dropdown-menu li:hover{
+    background-color: #6797e9;
+}
+
+.search-container ul{
+    top: 110px;
+}
+
+.select-list {
+    display: none;
+}
+
+.select-list.list-act {
+    display: block;
+}
+
+.physical-condition .btn-container {
+    display: flex;
+    margin-bottom: -1px;
+  }
+
+.physical-condition .btn-container .btn {
+    flex-grow: 1;
+    text-align: center;
+    padding: 5px 5px;
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+.physical-condition  .btn-container .btn:last-child {
+    border-right: 1px solid #ccc;
+  }
+
+.physical-condition  .btn-container .btn.active {
+    background-color: rgb(247,247,247);
+    border: 1px solid #ff0000;
+    color: #ff0000;
+    border-bottom: none;
+  }
+
+.content-physical-hot a{
+    font-size: 12px;
+    padding: 2px 5px;
+    line-height: 1;
+}
+
+
+.content-physical-view img, .content-physical-hot img, .content-physical-new img, .content-physical-categori-hot img{
+    width: 40px;
+    height: 60px;
+    margin-right: 5px;
+}
+.content-physical-condition{
+    width: 250px;
+}
+
+.content-physical-condition h5{
+    font-size: 16px;
+}
+.content-physical-hot h5, .content-physical-condition h5{
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(234, 233, 233, 0.3);
+    transition: box-shadow 0.25s ease-in-out;
+    padding: 6px 10px;
+}
+
+.content-physical-hot h4,
+.content-physical-view h4,
+.content-physical-new h4{
+    font-size: 14px;
+    float: left;
+    width: 200px;
+    margin-bottom: 2px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(3em + 8ch);
+}
+
+.content-physical-categori-hot h4{
+    font-size: 14px;
+    float: left;
+    width: 200px;
+    margin-bottom: 2px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(3em + 18ch);
+}
+
+@media (max-width: 768px) {
+    /* Áp dụng luật CSS khác cho màn hình điện thoại */
+    .content-physical-hot h4,
+    .content-physical-view h4,
+    .content-physical-new h4,
+    .content-physical-categori-hot h4 {
+      float: left;
+      width: 400px;
+      display: block;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      max-width: none;
+    }
+  }
+
+.content-physical-hot p,
+.content-physical-view p,
+.content-physical-new p,
+.content-physical-categori-hot p{
+    margin-bottom: 2px;
+    font-size: 12px;
+    float: left;
+    width: 200px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(3em + 8ch);
+
+}
+
+
+@media (max-width: 768px) {
+    /* Áp dụng luật CSS khác cho màn hình điện thoại */
+    .content-physical-hot p,
+    .content-physical-view p,
+    .content-physical-new p,
+    .content-physical-categori-hot p{
+      float: left;
+      margin-right: 10px;
+      display: block;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      max-width: none;
+    }
+  }
+
+.content-physical-hot ul, .content-physical-condition ul{
+    border-radius: 4px;
+    padding: 6px 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+    margin-top: -5px;
+}
+
+.content-physical-condition li{
+    width: 110px;
+}
+
+.content-physical-condition li:hover{
+    border-radius: 3px;
+    background-color: #ccc;
+}
+
+.content-physical-view, .content-physical-new{
+    border-radius: 4px;
+    padding: 6px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+}
+
+.name-categori-list-book span{
+    font-size: 12px;
+    border-radius: 4px;
+    background-color: #ff0000;
+    padding: 1px 5px;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.book-item {
+    width: 360px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.book-list .book-item {
+    border-radius: 4px;
+    background-color: rgb(247,247,247);
+    padding: 6px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+}
+
+.book-item img {
+    width: 100px;
+    height: 130px;
+    margin-right: 10px;
+}
+
+.book-item .view span{
+    border-radius: 4px;
+    background-color: rgb(176, 215, 239);
+    padding: 1;
+}
+
+.book-details {
+    flex-grow: 1;
+}
+
+.book-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.book-item h4{
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+.book-item p{
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.book-info {
+    font-size: 14px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #ccc;
+    text-decoration: none;
+    color: #000;
+}
+
+.pagination a.active {
+    background-color: #333;
+    color: #fff;
+}
+

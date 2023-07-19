@@ -13,10 +13,13 @@ class Story extends Model
     protected $table = 'stories';
 
     protected $fillable = [
+        'image',
         'name',
-        'name_other',
         'summary',
-        'title_id'
+        'method',
+        'content',
+        'title_id',
+        'slug'
     ];
 
     protected static function booted()
@@ -39,6 +42,11 @@ class Story extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_stories', 'story_id', 'user_id')->withPivot('point');
+        return $this->belongsToMany(User::class, 'user_stories', 'story_id', 'user_id')->withPivot('point', 'status');
+    }
+
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class, 'story_id');
     }
 }

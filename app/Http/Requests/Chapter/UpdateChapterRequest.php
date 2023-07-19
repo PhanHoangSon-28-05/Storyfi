@@ -26,6 +26,7 @@ class UpdateChapterRequest extends FormRequest
         return [
             'number_chapter' => 'required',
             'name' => 'required',
+            'sumary' => 'required|max:4000',
             'content' => 'required',
         ];
     }

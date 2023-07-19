@@ -24,9 +24,9 @@ class CreateStotryRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => 'required',
             'name' => 'required',
-            'name_other' => 'required',
-            'summary' => 'required',
+            'summary' => 'required|max:8000',
             'title_id' => 'required',
         ];
     }

@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('name_other');
-            $table->string('summary', 2000);
+            $table->string('image')->unique();
+            $table->string('name')->unique();
+            $table->string('summary', 4000)->unique();
+            $table->tinyInteger('method');
+            $table->longText('content')->nullable()->unique();
             $table->integer('sum_chapter');
             $table->integer('view');
             $table->foreignId('title_id')->constrained()->cascadeOnDelete();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
         Schema::create('category_story', function (Blueprint $table) { // Update the table name to match the convention

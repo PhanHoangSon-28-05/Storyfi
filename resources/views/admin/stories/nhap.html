@@ -1,0 +1,26 @@
+<!-- HTML -->
+<div class="form-group">
+    <label class="control-label">Chọn phương thức</label>
+
+  <div class="form-group" id="content" style="display: none;">
+    <label class="control-label">Nội dung</label>
+    <textarea class="form-control"></textarea>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const phuongthucRadio1 = document.querySelector('input[value="1"]');
+    const phuongthucRadio2 = document.querySelector('input[value="2"]');
+    const contentDiv = document.getElementById('content');
+
+    function showContent() {
+      contentDiv.style.display = 'block';
+    }
+
+    function hideContent() {
+      contentDiv.style.display = 'none';
+    }
+
+    phuongthucRadio1.addEventListener('click', hideContent);
+    phuongthucRadio2.addEventListener('click', showContent);
+  </script>

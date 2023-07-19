@@ -1,4 +1,4 @@
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="font-size: 15px;">
     <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
@@ -36,6 +36,11 @@
                 </li>
             @endcan
 
+            @hasrole(['super-admin', 'admin'])
+                <li><a href="{{ URL::route('list-stories.index') }}"><i class="fa fa-home"></i> All Story </a>
+                </li>
+            @endhasrole
+
             @can('show-story')
                 <li><a><i class="fa fa-home"></i> Story <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -43,6 +48,7 @@
                     </ul>
                 </li>
             @endcan
+
         </ul>
     </div>
 </div>

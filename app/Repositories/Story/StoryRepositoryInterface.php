@@ -7,4 +7,8 @@ use App\Repositories\RepositoryInterface;
 interface StoryRepositoryInterface extends RepositoryInterface
 {
     public function getStory();
+
+    public function getList_all_story();
+    public function getList_all_story_view($id);
+    public function update_approval($id, $status);
 }

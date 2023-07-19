@@ -6,6 +6,7 @@ use App\Models\Chapter;
 use App\Models\Story;
 use App\Models\User_story;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Str;
 
 
 class ChapterRepository extends BaseRepository implements ChapterRepositoryInterface
@@ -55,6 +56,7 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
 
     public function createChapter($attributes = [])
     {
+        $attributes['slug'] = Str::slug($attributes['number_chapter']) . '-' . Str::slug($attributes['name']);
         $storyId = $attributes['story_id'];
 
         $query = [

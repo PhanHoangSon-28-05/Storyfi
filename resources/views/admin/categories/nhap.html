@@ -3,130 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-    body{
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #1C1D22;
-    }
-    button{
-        padding: 10px;
-    }
-    .notifications{
-        position: fixed;
-        top: 30px;
-        right: 20px;
-    }
-    .toast{
-        position: relative;
-        padding: 10px;
-        color: #fff;
-        margin-bottom: 10px;
-        width: 400px;
-        display: grid;
-        grid-template-columns: 70px 1fr 70px;
-        border-radius: 5px;
-        --color: #0abf30;
-        background-image:
-            linear-gradient(
-                to right, #0abf3055, #22242f 30%
-            );
-        animation: show 0.3s ease 1 forwards
-    }
-    .toast i{
-        color: var(--color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: x-large;
-    }
-    .toast .title{
-        font-size: x-large;
-        font-weight: bold;
-    }
-    .toast span, .toast i:nth-child(3){
-        color: #fff;
-        opacity: 0.6;
-    }
-    @keyframes show{
-        0%{
-            transform: translateX(100%);
-        }
-        40%{
-            transform: translateX(-5%);
-        }
-        80%{
-            transform: translateX(0%);
-        }
-        100%{
-            transform: translateX(-10%);
-        }
-    }
-    .toast::before{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background-color: var(--color);
-        width: 100%;
-        height: 3px;
-        content: '';
-        box-shadow: 0 0 10px var(--color);
-        animation: timeOut 5s linear 1 forwards
-    }
-    @keyframes timeOut{
-        to{
-            width: 0;
-        }
-    }
-    .toast.warning{
-        --color: #e9bd0c;
-        background-image:
-            linear-gradient(
-                to right, #e9bd0c55, #22242F 30%
-            );
-    }
-
-    </style>
+    <title>Trang web truyện tranh</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="notifications"></div>
-    <div class="buttons">
-        <button id="warning">Warning</button>
-    </div>
-    <script>
-        let notifications = document.querySelector('.notifications');
-    let info = document.getElementById('info');
-
-    function createToast(type, icon, title, text){
-        let newToast = document.createElement('div');
-        newToast.innerHTML = `
-            <div class="toast ${type}">
-                <i class="${icon}"></i>
-                <div class="content">
-                    <div class="title">${title}</div>
-                    <span>${text}</span>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Trang web truyện tranh</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Danh mục</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tìm kiếm</a>
+                        </li>
+                    </ul>
                 </div>
-                <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
-            </div>`;
-        notifications.appendChild(newToast);
-        newToast.timeOut = setTimeout(
-            ()=>newToast.remove(), 5000
-        )
-    }
-    warning.onclick = function(){
-        let type = 'warning';
-        let icon = 'fa-solid fa-triangle-exclamation';
-        let title = 'Warning';
-        let text = 'This is a warning toast.';
-        createToast(type, icon, title, text);
-    }
-    </script>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="comic-list">
+            <div class="container">
+                <h2>Danh sách truyện tranh</h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <a href="#">
+                                <img src="comic1.jpg" class="card-img-top" alt="Truyện tranh 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tên truyện tranh 1</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <a href="#">
+                                <img src="comic2.jpg" class="card-img-top" alt="Truyện tranh 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tên truyện tranh 2</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thêm các mục truyện tranh khác -->
+                </div>
+            </div>
+        </section>
+
+        <section class="comic-detail">
+            <div class="container">
+                <h2>Chi tiết truyện tranh</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="comic1.jpg" class="img-fluid" alt="Truyện tranh 1">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Tên truyện tranh 1</h3>
+                        <p>Mô tả truyện tranh</p>
+                        <!-- Thêm các thông tin khác về truyện tranh -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Trang web truyện tranh &copy; 2023. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-

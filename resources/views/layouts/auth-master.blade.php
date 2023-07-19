@@ -1,50 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.87.0">
-    <title>Signin Template · Bootstrap v5.1</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+    <title>Gentelella Alela! | </title>
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+    <!-- Bootstrap -->
+    <link href="{{ URL::asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ URL::asset('admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{ URL::asset('admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{{ URL::asset('admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
 
-
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ URL::asset('admin/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('admin/vendors/index-login.css') }}" rel="stylesheet">
 </head>
 
-<body class="text-center">
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
 
-    <main class="form-signin">
-
-        @yield('content')
-
-    </main>
-
-
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @yield('content')
+                </section>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -14,7 +14,9 @@ class Chapter extends Model
         'story_id',
         'number_chapter',
         'name',
+        'sumary',
         'content',
+        'slug'
     ];
 
 

@@ -74,7 +74,7 @@ class ChapterController extends Controller
 
         $chapters =  $this->chapterRepo->CreateChapter($dataCreate);
 
-        return redirect()->route('stories.index')->with('message', 'Create success');
+        return redirect()->back()->with('message', 'Create success');
     }
 
 

@@ -1,0 +1,219 @@
+body{
+    background-color: rgb(219,219,224);
+    overflow-x: hidden;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu{
+    width: 200px;
+}
+
+.dropdown-menu.a li{
+    border-radius: 15px;
+    width: 200px;
+}
+
+.dropdown-menu.a li:hover{
+    background-color: #6797e9;
+}
+
+.dropdown-menu.b li{
+    width: 120px;
+    border-radius: 15px;
+}
+
+.dropdown-menu.b li:hover{
+    background-color: #6797e9;
+}
+
+.dropdown-menu.b{
+    width: 880px;
+}
+
+.search-container ul{
+    top: 55px;
+}
+
+.title-bar-1 a {
+    font-size: 15px;
+    padding: 0px 3px;
+}
+
+.title-bar-1 a:hover {
+    color: red;
+}
+
+.book-image img {
+    background-repeat: no-repeat;
+    background-size: 140px 28px;
+    display: inline-block;
+    height: 28px;
+    width: 140px;
+}
+
+.book-image img{
+    height: 100%;
+    width: 80%;
+    background-size: cover;
+    background-position: center;
+  }
+
+.row.border-3, .story_hot{
+    background-color: #FFFFFF;
+}
+
+.m-newest2 a:hover {
+    color: rgb(89, 112, 240);
+    text-decoration: underline;
+}
+.content-physical-hot img, .content-physical-new img{
+    width: 80px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.content-physical-new li{
+    width: 340px;
+}
+
+.content-physical-hot p, .content-physical-view p{
+    font-size: 14px;
+}
+
+.name-categori-list-book span{
+    font-size: 12px;
+    border-radius: 4px;
+    background-color: #ff0000;
+    padding: 1px 5px;
+}
+.content-physical-hot, .content-physical-new{
+    border-radius: 4px;
+    background-color: rgb(247,247,247);
+    padding: 6px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+}
+
+.content-physical-condition h5{
+    font-size: 16px;
+}
+.content-physical-hot h5, .content-physical-condition h5{
+    border-radius: 4px;
+    background-color: rgb(223, 220, 220);
+    box-shadow: 0 0 10px rgba(234, 233, 233, 0.3);
+    transition: box-shadow 0.25s ease-in-out;
+    padding: 6px 10px;
+}
+
+
+.comment{
+    border-radius: 4px;
+    background-color: rgb(247,247,247);
+    padding: 6px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+}
+.comment .img_user{
+    font-size: 40px;
+    margin-left: -10px;
+}
+
+.comment .information{
+    margin-left: -10px;
+    border-bottom: 1px dotted #111;
+    margin-bottom: 5px;
+}
+.comment .information h4{
+    font-size: 16px;
+}
+
+.comment .information p{
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+
+.physical-condition .btn-container {
+    display: flex;
+    margin-bottom: -1px;
+}
+
+.physical-condition .btn-container .btn {
+    flex-grow: 1;
+    text-align: center;
+    padding: 5px 5px;
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.physical-condition  .btn-container .btn:last-child {
+    border-right: 1px solid #ccc;
+}
+
+.physical-condition  .btn-container .btn.active {
+    background-color: rgb(247,247,247);
+    border: 1px solid #fc8484;
+    color: #fc8484;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.book-details h4{
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.book-details p{
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.book-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.book-item {
+    width: 340px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.book-list .book-item {
+    border-radius: 4px;
+    background-color: rgb(247,247,247);
+    padding: 6px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+}
+
+.book-item img {
+    width: 100px;
+    height: 130px;
+    margin-right: 10px;
+}
+
+.book-item .view span{
+    border-radius: 4px;
+    background-color: rgb(176, 215, 239);
+    padding: 1;
+}

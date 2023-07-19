@@ -10,7 +10,7 @@ class User_story extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'story_id', 'point'
+        'user_id', 'story_id', 'point', 'status'
     ];
 
     protected static function boot()

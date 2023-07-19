@@ -23,4 +23,26 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
             $query->where('user_id', $userID);
         })->get();
     }
+
+    public function getList_all_story()
+    {
+        $query = $this->model->all();
+        return $query;
+    }
+
+    public function getList_all_story_view($id)
+    {
+        $query = $this->model->find($id);
+        return $query;
+    }
+
+    public function update_approval($id, $status)
+    {
+        $result = $this->model->where('id', $id)->first();
+        $update_status = $result->users()->first()->pivot;
+
+        $update_status->update(['status' => $status]);
+
+        return $update_status;
+    }
 }

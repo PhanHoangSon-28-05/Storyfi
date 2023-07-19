@@ -2,13 +2,17 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChapterController;
+use App\Http\Controllers\Admin\ListStoryContoller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\StoryController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Client\LoginController as ClientLoginController;
+use App\Http\Controllers\Client\LogoutController as ClientLogoutController;
+use App\Http\Controllers\Client\RegisterController;
+use App\Http\Controllers\Client\ViewController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,27 +32,43 @@ Route::get('welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+// Client
+
+Route::get('login', [ClientLoginController::class, 'show'])->name('client.login.show');
+Route::post('login', [ClientLoginController::class, 'login'])->name('client.login.perform');
+
+Route::get('logout', [ClientLogoutController::class, 'perform'])->name('client.logout.perform');
+Route::get('create-account', [RegisterController::class, 'create'])->name('client.register.show');
+Route::post('create-account', [RegisterController::class, 'store'])->name('client.register.perform');
+
+
+
+Route::get('/', [ViewController::class, 'index'])->name('home.index');
+
+Route::get('/categories/{slug}', [ViewController::class, 'category'])->name('home.category');
+
+Route::get('/stories/{slug}', [ViewController::class, 'summary_story'])->name('home.story.index');
+
+Route::get('/stories/{slugstory}/contents/{slug}', [ViewController::class, 'content_chapter'])->name('home.content');
+Route::get('/stories/{slugstory}/contents', [ViewController::class, 'content_chapter_short'])->name('home.content.short');
+
+
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard.index');
 })->name('admin.dashboard')->middleware('auth');
 
+
+
 /**
  * Login Routes
  */
-Route::get('/login', [LoginController::class, 'show'])->name('login.show');
-Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
-
-
-
+Route::get('admin/login', [LoginController::class, 'show'])->name('login.show');
+Route::post('admin/login', [LoginController::class, 'login'])->name('login.perform');
 /**
  * Logout Routes
  */
-Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
-
-
-
+Route::get('admin/logout', [LogoutController::class, 'perform'])->name('logout.perform');
 Route::prefix('admin')->middleware('auth')->group(function () {
     // Route::resource('roles', RoleController::class);
     // Route::resource('users', UserController::class);
@@ -110,5 +130,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('/{coupon}', 'update')->name('update')->middleware('permission:update-chapter');
         Route::delete('/{coupon}', 'destroy')->name('destroy')->middleware('permission:delete-chapter');
         Route::get('/{coupon}/edit', 'edit')->name('edit')->middleware('permission:update-chapter');
+    });
+    Route::prefix('list-stories')->controller(ListStoryContoller::class)->name('list-stories.')->group(function () {
+        Route::get('/', 'index')->name('index')->middleware('permission:show-list-story');
+        Route::get('/{coupon}', 'view')->name('show')->middleware('permission:show-list-story');
+        Route::put('/{coupon}', 'update')->name('update')->middleware('permission:update-list-story');
     });
 });

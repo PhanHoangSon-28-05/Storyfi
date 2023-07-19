@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,22 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Story\StoryRepositoryInterface::class,
             \App\Repositories\Story\StoryRepository::class,
         );
+        $this->app->singleton(
+            \App\Repositories\Client\Home\Category\CategoryRepositoryInterface::class,
+            \App\Repositories\Client\Home\Category\CategoryRepository::class,
+        );
+        $this->app->singleton(
+            \App\Repositories\Client\Home\Story\StoryRepositoryInterface::class,
+            \App\Repositories\Client\Home\Story\StoryRepository::class,
+        );
+        $this->app->singleton(
+            \App\Repositories\Client\Home\Chapter\ChapterRepositoryInterface::class,
+            \App\Repositories\Client\Home\Chapter\ChapterRepository::class,
+        );
+        $this->app->singleton(
+            \App\Repositories\View\ViewRepositoryInterface::class,
+            \App\Repositories\View\ViewRepository::class,
+        );
     }
 
     /**
@@ -30,6 +47,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::useBootstrap();
     }
 }

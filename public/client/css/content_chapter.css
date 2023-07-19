@@ -1,0 +1,114 @@
+body{
+  background-color: rgb(247,247,247);
+  overflow-x: hidden;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+.page-body{
+  border-radius: 4px;
+  background-color: rgb(247,247,247);
+  padding: 6px 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 1.5s ease-in-out;
+}
+.content-chapter{
+  margin-left: -2px;
+  margin-right: -2px;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+  padding: 10px 0px;
+}
+
+.notification-comment{
+  border-radius: 4px;
+  background-color: rgb(247,247,247);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 1.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.textarea-container {
+  position: relative;
+}
+
+.submit-button {
+position: absolute;
+right: 10px;
+bottom: 10px;
+z-index: 1;
+}
+
+.footer{
+    background-color: rgb(247,247,247);
+}
+
+.wp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ll {
+  float: right;
+  margin-left: 10px;
+}
+
+.rr {
+  float: left;
+  margin-right: 10px;
+}
+
+.enter-comment{
+  padding-top: 15px;
+}
+
+.enter-comment i{
+  margin-left: 25px;
+}
+
+.comment{
+  border-radius: 4px;
+  background-color: rgb(247,247,247);
+  padding: 6px 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 1.5s ease-in-out;
+}
+.comment .img_user{
+  font-size: 40px;
+  margin-left: -10px;
+}
+
+.comment .information{
+  margin-left: -30px;
+  border-bottom: 1px dotted #111;
+  margin-bottom: 5px;
+}
+.comment .information h4{
+  font-size: 16px;
+}
+
+.comment .information p{
+  font-size: 14px;
+}
+
+.dropdown-menu li{
+    width: 120px;
+}
+.dropdown-menu.b{
+    width: 880px;
+}
+
+.search-container ul{
+    top: 55px;
+}

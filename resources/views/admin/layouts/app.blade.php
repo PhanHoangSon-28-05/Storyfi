@@ -63,6 +63,9 @@
         rel="stylesheet">
     <link href="{{ URL::asset('admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ URL::asset('admin/vendors/index-admin.css') }}">
+
 </head>
 
 <body class="nav-md">
@@ -72,8 +75,7 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="{{ URL::route('admin.dashboard') }}" class="site_title"><i class="fa fa-paw"></i>
-                            <span>Gentelella
-                                Alela!</span></a>
+                            <span>Gentelella Alela!</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -144,7 +146,6 @@
                                                 class="fa fa-sign-out pull-right"></i>
                                             Log Out</a>
                                     @endauth
-
                                 </div>
                             </li>
                         </ul>
@@ -154,12 +155,28 @@
             <!-- /top navigation -->
 
             <!-- page content -->
-            <div class="right_col" role="main">
-                @yield('content')
-            </div>
-            <!-- /page content -->
+            @yield('content')
 
+            <!-- /page content -->
         </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2023 Your Website. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-inline text-right">
+                            <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+                            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                            <li class="list-inline-item"><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- jQuery -->

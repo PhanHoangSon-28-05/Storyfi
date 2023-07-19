@@ -25,8 +25,7 @@ class UpdateStotryRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'name_other' => 'required',
-            'summary' => 'required',
+            'summary' => 'required|max:8000',
             'title_id' => 'required',
         ];
     }

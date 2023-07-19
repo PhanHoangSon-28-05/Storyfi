@@ -17,11 +17,14 @@ class UserSeederSuperAdmin extends Seeder
     public function run()
     {
         $user_superAdmins = [
-            ['fullname' => 'Phan Hoàng Sơn', 'email' => 'hoangson28052002@gmail.com', 'password' => Hash::make('123456789'), 'birthday' => '2002-05-28', 'gender' => 'Male', 'phone' => '0764765720', 'point' => '0']
+            ['fullname' => 'Phan Hoàng Sơn', 'email' => 'hoangson28052002@gmail.com', 'password' => Hash::make('123456789'), 'birthday' => '2002-05-28', 'gender' => 'male', 'phone' => '0764765720', 'point' => '0']
         ];
 
         foreach ($user_superAdmins as $value) {
             User::updateOrCreate($value);
         }
+
+        $superAdmin = User::whereEmail('hoangson28052002@gmail.com')->first();
+        $superAdmin->assignRole('super-admin');
     }
 }

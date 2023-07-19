@@ -2,7 +2,7 @@
 @section('title', 'Edit Uses')
 @section('content')
     <div class="right_col" role="main">
-        <div class="">
+        <div class="row">
             <div class="page-title">
                 <div class="title_left">
                     <h3>Edit Uses</h3>
@@ -11,11 +11,7 @@
             <div class="clearfix"></div>
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Edit Uses</h2>
-                            <div class="clearfix"></div>
-                        </div>
+                    <div class="">
                         <div class="x_content">
                             <form method="post" action="{{ route('users.update', $user->id) }}" id="demo-form"
                                 data-parsley-validate enctype="multipart/form-data">
@@ -27,9 +23,10 @@
                                         for="fullname"style="font-weight: bold; font-size:15px;">Full Name
                                         <span class="required" style="color: red;">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2"
-                                            value="{{ old('fullname') ?? $user->fullname }}" name="fullname" id="fullname"
-                                            placeholder="Phan Hoàng Sơn" required="required" />
+                                        <input class="form-control" type="text" data-validate-length-range="6"
+                                            data-validate-words="2" value="{{ old('fullname') ?? $user->fullname }}"
+                                            name="fullname" id="fullname" placeholder="Phan Hoàng Sơn"
+                                            required="required" />
                                         @error('fullname')
                                             <span class="text-danger">{{ $message }}</span><br>
                                         @enderror
@@ -41,9 +38,9 @@
                                         for="email"style="font-weight: bold; font-size:15px;">Email <span
                                             class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" value="{{ old('email') ?? $user->email }}"
-                                            id="email" name="email" class='email' required="required"
-                                            type="email" />
+                                        <input class="form-control" type="text"
+                                            value="{{ old('email') ?? $user->email }}" id="email" name="email"
+                                            class='email' required="required" type="email" />
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span><br>
                                         @enderror
@@ -70,23 +67,6 @@
                                     </div>
                                 </div>
 
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align"
-                                        style="font-weight: bold; font-size:15px;">Gender <span
-                                            class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <select name="gender" class="form-control">
-                                            <option value="male">Male
-                                            </option>
-                                            <option value="fe-male"{{ $user->gender == 'fe-male' ? 'selected' : '' }}>
-                                                FeMale</option>
-                                        </select>
-                                    </div>
-                                    @error('group')
-                                        <span class="text-danger">{{ $message }}</span><br>
-                                    @enderror
-                                </div>
-
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align"
                                         style="font-weight: bold; font-size:15px;">Gender <span
@@ -96,13 +76,13 @@
                                             <label class="btn btn-secondary" data-toggle-class="btn-primary"
                                                 data-toggle-passive-class="btn-default">
                                                 <input type="radio" name="gender" value="male" class="join-btn"
-                                                    {{ $user->gender == 'male' ? 'selected' : '' }}>
+                                                    {{ $user->gender == 'male' ? 'checked' : '' }}>
                                                 &nbsp; Male &nbsp;
                                             </label>
                                             <label class="btn btn-primary" data-toggle-class="btn-primary"
                                                 data-toggle-passive-class="btn-default">
                                                 <input type="radio" name="gender" value="fe-male" class="join-btn"
-                                                    {{ $user->gender == 'fe-male' ? 'selected' : '' }}>
+                                                    {{ $user->gender == 'fe-male' ? 'checked' : '' }}>
                                                 Female
                                             </label>
                                         </div>
@@ -114,9 +94,9 @@
                                         style="font-weight: bold; font-size:15px;">Telephone
                                         <span class="required" style="color: red;">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control"value="{{ old('phone') ?? $user->phone }}"
-                                            id="phone" type="tel" class='tel' name="phone"
-                                            required='required' data-validate-length-range="8,20" />
+                                        <input class="form-control" type="text"value="{{ old('phone') ?? $user->phone }}"
+                                            id="phone" type="tel" class='tel' name="phone" required='required'
+                                            data-validate-length-range="8,20" />
                                         @error('phone')
                                             <span class="text-danger">{{ $message }}</span><br>
                                         @enderror
@@ -171,7 +151,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script>

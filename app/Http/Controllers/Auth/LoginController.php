@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function show()
     {
-        return view('layouts.auth.login');
+        return view('layouts.admin.login');
     }
 
     public function login(LoginRequest $request)
@@ -19,7 +19,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) :
-            return redirect()->to('login')->withErrors(trans('auth.failed'));
+            return redirect()->to('login')->withErrors(trans('admin.failed'));
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
