@@ -102,9 +102,20 @@ z-index: 1;
   font-size: 14px;
 }
 
-.dropdown-menu li{
-    width: 120px;
+
+.dropdown-menu{
+    width: 200px;
 }
+
+.dropdown-menu.a li{
+    border-radius: 15px;
+    width: 200px;
+}
+
+.dropdown-menu.a li:hover{
+    background-color: #6797e9;
+}
+
 .dropdown-menu.b{
     width: 880px;
 }

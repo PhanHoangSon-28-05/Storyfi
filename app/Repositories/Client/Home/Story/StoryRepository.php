@@ -121,9 +121,9 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
     {
         $story = $this->model->where('slug', $slug)->first();
 
-        $chapters = $story->chapters()->whereHas('users', function ($query) {
-            $query->where('status', 2);
-        })->paginate(12);
+        $chapters = $story->chapters()->paginate(12);
+
+        // dd($chapters);
 
         return $chapters;
     }

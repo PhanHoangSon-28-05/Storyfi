@@ -3,7 +3,7 @@
         <div class="row border-3 rounded-3  mt-3">
             <div class="col-lg-4 mt-3">
                 <div class="book-image">
-                    <img src="{{ url('storage/images/' . $summaries->image) }}" alt="">
+                    <img src="{{ url('storage/images/' . $summaries->image ) }}" alt="">
                 </div>
             </div>
             <div class="col-lg-8 mt-2">
@@ -63,8 +63,10 @@
             <div id="content1" class="">
                 <div class="row border-3 rounded-3">
                     <div class="mt-1">
+                        {{-- {{ dd($summaries->method) }} --}}
                         @if ($summaries->method == 0)
                         @else
+                            {{-- {{ dd($stories_chapter) }} --}}
                             @if (Str::slug($stories_chapter->first()) == '')
                             @else
                                 <div class="m-newest2">

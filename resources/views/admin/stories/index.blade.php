@@ -62,7 +62,9 @@
                                                                     href="{{ route('stories.edit', $story->id) }}"><i
                                                                         class="fas fa-edit"></i> Edit</a>
                                                             @endcan
-                                                            @if ($story->method == '1')
+                                                            <!-- method 1 chuyện dài chương, 0 chuyện ngắn -->
+                                                            {{-- {{ dd($story->method) }} --}}
+                                                            @if ($story->method == 1)
                                                                 @can('show-chapter')
                                                                     <a class="dropdown-item"
                                                                         href="{{ route('chapters.show', $story->id) }}">
