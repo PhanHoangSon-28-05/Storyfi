@@ -36,7 +36,6 @@ Route::get('welcome', function () {
 
 Route::get('login', [ClientLoginController::class, 'show'])->name('client.login.show');
 Route::post('login', [ClientLoginController::class, 'login'])->name('client.login.perform');
-
 Route::get('logout', [ClientLogoutController::class, 'perform'])->name('client.logout.perform');
 Route::get('create-account', [RegisterController::class, 'create'])->name('client.register.show');
 Route::post('create-account', [RegisterController::class, 'store'])->name('client.register.perform');
@@ -46,12 +45,14 @@ Route::post('create-account', [RegisterController::class, 'store'])->name('clien
 Route::get('/', [ViewController::class, 'index'])->name('home.index');
 
 Route::get('/categories/{slug}', [ViewController::class, 'category'])->name('home.category');
-
-Route::get('/stories/{slug}', [ViewController::class, 'summary_story'])->name('home.story.index');
-
-Route::get('/stories/{slugstory}/contents/{slug}', [ViewController::class, 'content_chapter'])->name('home.content');
-Route::get('/stories/{slugstory}/contents', [ViewController::class, 'content_chapter_short'])->name('home.content.short');
-
+// Route::get('/stories/{slug}', [ViewController::class, 'summary_story'])->name('home.story.index');
+// Route::get('/stories/{slugstory}/contents/{slug}', [ViewController::class, 'content_chapter'])->name('home.content');
+// Route::get('/stories/{slugstory}/contents', [ViewController::class, 'content_chapter_short'])->name('home.content.short');
+Route::group(['prefix' => '/stories'], function () {
+    Route::get('/{slug}', [ViewController::class, 'summary_story'])->name('home.story.index');
+    Route::get('/{slugstory}/contents/{slug}', [ViewController::class, 'content_chapter'])->name('home.content');
+    Route::get('/{slugstory}/contents', [ViewController::class, 'content_chapter_short'])->name('home.content.short');
+});
 
 
 Route::get('/admin/dashboard', function () {

@@ -29,13 +29,13 @@
                         <div class="x_content">
 
                             <!-- start form for validation -->
-                            <form method="post" action="{{ route('chapters.store') }}" id="demo-form" data-parsley-validate
-                                enctype="multipart/form-data">
+                            <form method="post" action="{{ route('chapters.store', $stories->id) }}" id="demo-form"
+                                data-parsley-validate enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="field item form-group">
-                                    <input class="form-control" type="text" type="text" value="{{ $stories->id }}" name="story_id"
-                                        style="display: none;">
+                                    <input class="form-control" type="text" type="text" value="{{ $stories->id }}"
+                                        name="story_id" style="display: none;">
                                     <label class="col-sm-2"></label>
                                     <label class="col-form-label col-sm-8 label-align" for="name"
                                         style="font-weight: bold; font-size:20px; text-align: center;">
@@ -50,9 +50,10 @@
                                         style="font-weight: bold; font-size:15px;">Number chapter
                                         <span class="required" style="color: red;">*</span></label>
                                     <div class="col-md-9 col-sm-6">
-                                        <input class="form-control" type="text" data-validate-length-range="6" data-validate-words="2"
-                                            value="{{ old('number_chapter') }}" name="number_chapter" id="number_chapter"
-                                            placeholder="Chương 1" required="required" />
+                                        <input class="form-control" type="text" data-validate-length-range="6"
+                                            data-validate-words="2" value="{{ old('number_chapter') }}"
+                                            name="number_chapter" id="number_chapter" placeholder="Chương 1"
+                                            required="required" />
                                         @error('number_chapter')
                                             <span class="text-danger">{{ $message }}</span><br>
                                         @enderror
@@ -64,9 +65,10 @@
                                         style="font-weight: bold; font-size:15px;">Name
                                         <span class="required" style="color: red;">*</span></label>
                                     <div class="col-md-9 col-sm-6">
-                                        <input class="form-control" type="text" data-validate-length-range="6" data-validate-words="2"
-                                            value="{{ old('name') }}" name="name" id="name"
-                                            placeholder="Enter the titles chapter of the story here" required="required" />
+                                        <input class="form-control" type="text" data-validate-length-range="6"
+                                            data-validate-words="2" value="{{ old('name') }}" name="name"
+                                            id="name" placeholder="Enter the titles chapter of the story here"
+                                            required="required" />
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span><br>
                                         @enderror
@@ -112,9 +114,9 @@
 @endsection
 @section('scripts')
     <!--
-                                                                                                                                            The "super-build" of CKEditor 5 served via CDN contains a large set of plugins and multiple editor types.
-                                                                                                                                            See https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/quick-start.html#running-a-full-featured-editor-from-cdn
-                                                                                                                                        -->
+                                                                                                                                                The "super-build" of CKEditor 5 served via CDN contains a large set of plugins and multiple editor types.
+                                                                                                                                                See https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/quick-start.html#running-a-full-featured-editor-from-cdn
+                                                                                                                                            -->
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/super-build/ckeditor.js"></script>
 
     <script>

@@ -14,7 +14,6 @@ interface StoryRepositoryInterface extends RepositoryInterface
     public function getNew_story();
     public function getStory_short();
     public function getStory_countChapter();
-
     public function getStory_summary($slug);
     public function getStory_user($slug);
     public function getNews_story_InSummary();

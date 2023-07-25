@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 @endif
-                <button type="submit" class="btn btn-primary float-right">ADD</button>
+                <button type="submit" class="btn btn-primary float-right">Confirm</button>
                 <!-- Modal -->
                 <div class="modal fade" id="publishModal" tabindex="-1" aria-labelledby="publishModalLabel"
                     aria-hidden="true">
