@@ -538,10 +538,10 @@ dd span {
         width: 100%;
     }
     .book-wrap.cf h4{
-        width: 275px;
+        width: 240px;
     }
     .book-details {
-        width: 271px;
+        width: 250px;
         margin-left: 4px;
         flex-grow: 1;
     }
@@ -575,3 +575,18 @@ dd span {
         width: 100%;
     }
 }
+
+.content-3{
+    width: 1270px;
+}
+
+@media (max-width: 768px) {
+    .content-3{
+        margin-left: -35px;
+        width: 300px;
+    }
+    .wrap-title.lang{
+        width: 357px;
+    }
+    .book-list
+  }

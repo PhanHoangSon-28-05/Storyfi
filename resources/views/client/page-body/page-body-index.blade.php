@@ -32,10 +32,15 @@
                     </div>
                 </div>
             </div>
+            <div class="container" style="margin-left:35px;">
+                @include('client.main-content.index.content-center-index-3')
+            </div>
         </div>
-        @include('client.main-content.index.content-center-index-3')
-        @include('client.main-content.index.content-center-index-4')
-        @include('client.main-content.index.content-center-index-5')
+        <div class="container" style="margin-left:35px;">
+            @include('client.main-content.index.content-center-index-4')
+            @include('client.main-content.index.content-center-index-5')
+        </div>
+
     </page-body>
 @endsection
 

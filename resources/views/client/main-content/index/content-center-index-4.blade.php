@@ -1,5 +1,5 @@
 <?php use Carbon\Carbon; ?>
-<div class="row mt-2">
+<div class="row mt-2 content-4">
     <div class="col-sm-2 col-md-4 col-lg-3 col-xl-4">
         <div class="flipster">
             <ul class="flip-items">
@@ -26,8 +26,8 @@
                                 <p class="book-info view"><i class="fas fa-book-reader"></i> <span>{{ $value->view }}
                                         lượt đọc
                                     </span></p>
-                                <p class="text-center"><a href="" type="button"
-                                        class="btn btn-outline-secondary mb-2">Đọc
+                                <p class="text-center"><a href="{{ URL::route('home.story.index', $value->slug) }}"
+                                        type="button" class="btn btn-outline-secondary mb-2">Đọc
                                         truyện</a></p>
 
                             </div>
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-sm-8 col-md-4 col-lg-6 col-xl-8">
-        <div class="row content-4">
+        <div class="row content-4-chapter">
             <div class="col-sm-3 pt-2 pb-2 ps-1 pe-1 ">
                 <div class="first" data-l2="1">
                     <h3 class="category">
@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-        <div class="row content-4">
+        <div class="row content-4-chapter">
             <div class="col-sm-3 pt-2 pb-2 ps-1 pe-1 ">
                 <div class="first" data-l2="1">
                     <h3 class="category">
