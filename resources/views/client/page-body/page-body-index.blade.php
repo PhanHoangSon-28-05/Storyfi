@@ -12,35 +12,42 @@
     <page-body>
         @include('client.navagation.nav-index')
         <div class="content">
-            <div class="container">
-                <div class="row">
-                    @include('client.sidebar.sidebar-index.content-1.sidebar-left')
-
-                    @include('client.main-content.index.content-center-index-1')
-
-                    @include('client.sidebar.sidebar-index.content-1.sidebar-right')
-                </div>
-            </div>
-            <div class="content mt-2">
+            <section id="introduce">
                 <div class="container">
                     <div class="row">
-                        @include('client.sidebar.sidebar-index.content-2.sidebar-left')
+                        @include('client.sidebar.sidebar-index.content-1.sidebar-left')
 
-                        @include('client.main-content.index.content-center-index-2')
+                        @include('client.main-content.index.content-center-index-1')
 
-                        @include('client.sidebar.sidebar-index.content-2.sidebar-right')
+                        @include('client.sidebar.sidebar-index.content-1.sidebar-right')
                     </div>
                 </div>
-            </div>
-            <div class="container" style="margin-left:35px;">
-                @include('client.main-content.index.content-center-index-3')
-            </div>
-        </div>
-        <div class="container" style="margin-left:35px;">
-            @include('client.main-content.index.content-center-index-4')
-            @include('client.main-content.index.content-center-index-5')
-        </div>
+            </section>
+            <section id="story-sung-hot">
+                <div class="content mt-2">
+                    <div class="container">
+                        <div class="row">
+                            @include('client.sidebar.sidebar-index.content-2.sidebar-left')
 
+                            @include('client.main-content.index.content-center-index-2')
+
+                            @include('client.sidebar.sidebar-index.content-2.sidebar-right')
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="list-of-hot-categories">
+                <div class="container" style="margin-left:35px;">
+                    @include('client.main-content.index.content-center-index-3')
+                </div>
+            </section>
+        </div>
+        <section id="story-advertisement">
+            <div class="container" style="margin-left:35px;">
+                @include('client.main-content.index.content-center-index-4')
+                @include('client.main-content.index.content-center-index-5')
+            </div>
+        </section>
     </page-body>
 @endsection
 

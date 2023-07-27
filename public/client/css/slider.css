@@ -65,46 +65,77 @@ transition-delay: 0;
   }
 
   .flipster__item__content{
-    width: 200px;
-    height: 400px;
-  }
+    width: 250px;
+    height: 370px;
+}
+.flipster__item {
+  width: 250px;
+  height: 410px; /* Đặt chiều cao cho tất cả các <li> */
+}
   .flipster__item__content img{
     /* Thay đổi kích thước của hình nhỏ tại đây */
-    width: 200px; /* Đặt kích thước chiều rộng */
+    display: block;
+    width: 250px; /* Đặt kích thước chiều rộng */
     height: 370px;  /*Đặt kích thước chiều cao */
     object-fit: cover; /* Căn chỉnh hình ảnh trong kích thước đã đặt */
   }
 
   /* Đảm bảo tất cả các <li> cùng chiều cao với chiều cao của hình nhỏ */
-  .flipster__item {
-    width: 200px;
-    height: 410px; /* Đặt chiều cao cho tất cả các <li> */
-  }
 
   .content-placeholder {
     height: 100%; /* Chiều cao 100% để đảm bảo cùng chiều cao với item trên */
   }
 
-.read-more-button {
-    display: none;
-    opacity: 0; /* Mặc định ẩn nút button */
 
+  .read-more-button{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
 }
-.read-more-button p{
-    margin-left: 5px;
-    margin-bottom: 0px;
-}
-
-.flip-content:hover img{
-    width: 200px;
-    height: 200px;
-}
-
-
 .flip-content:hover .read-more-button {
-    width: 200px;
+    height: 100%;
+}
+
+.read-more-button .name-story{
+    width: 100%;
+    margin-top: 30%;
+    /* margin-bottom: 20px; */
+    color: white;
+    font-size: 20px;
+    /* position: absolute; */
+    text-align: center;
+    font-family: 'Damion', cursive;
+    transform: rotate(-5deg)skewX(-5deg);
+}
+
+.read-more-button p{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 15px;
+    width: 70%;
+    margin: 5% 0 0 18%;
+    letter-spacing: 5px;
+    line-height: 1.5em;
+    letter-spacing: -0.5px;
+}
+/* .flip-content:hover img{
+    display: block;
+    width: 250px;
+    height: 250px;
+} */
+
+
+/* .flip-content:hover .read-more-button {
+    width: 250px;
     border-radius: 5px;
     background-color: rgb(219,219,224);
     display: inline-block;
     opacity: 1;
-}
+} */

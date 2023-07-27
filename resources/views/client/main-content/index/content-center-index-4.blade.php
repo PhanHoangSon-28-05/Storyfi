@@ -8,28 +8,27 @@
                         <div class="flip-content mt-2">
                             <!-- Thêm class mt-2 để tạo khoảng cách phía trên -->
                             <img class="text-center" src="{{ url('storage/images/' . $value->image) }}">
-                            <div class="content-wrapper read-more-button">
-                                <p class="text-center">{{ $value->name }}</p>
+                            <div class="read-more-button">
+                                <h1 class="text-center name-story">{{ $value->name }}</h1>
                                 <a href="">
-                                    <p class="book-info" name="TacGia"><i class="fas fa-user"></i>
+                                    <p class="book-info"><i class="fas fa-user"></i>
                                         {{ optional($value->users->first())->fullname }}
                                     </p>
                                 </a>
                                 <p class="book-info" name="Chapter"><i class="fas fa-th-list"></i>
                                     @foreach ($value->categories as $category)
-                                        <a href=""><span>{{ $category->name }},</span></a>
+                                        {{ $category->name }},
                                     @endforeach
                                 </p>
-                                <p class="book-info"><i class="fas fa-book"></i> <span>{{ $value->sum_chapter }}
-                                        chương</span>
+                                <p class="book-info"><i class="fas fa-book"></i> {{ $value->sum_chapter }}
+                                    chương
                                 </p>
-                                <p class="book-info view"><i class="fas fa-book-reader"></i> <span>{{ $value->view }}
-                                        lượt đọc
-                                    </span></p>
+                                <p class="book-info view"><i class="fas fa-book-reader"></i> {{ $value->view }}
+                                    lượt đọc
+                                </p>
                                 <p class="text-center"><a href="{{ URL::route('home.story.index', $value->slug) }}"
-                                        type="button" class="btn btn-outline-secondary mb-2">Đọc
+                                        type="button" class="btn btn-secondary mb-2">Đọc
                                         truyện</a></p>
-
                             </div>
                         </div>
                     </li>

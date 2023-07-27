@@ -20,7 +20,9 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Damion&family=Roboto:wght@300&display=swap" rel="stylesheet">
     @yield('CSS')
     <link rel="stylesheet" href="{{ URL::asset('client/css/scrollToTop.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('client/css/search.css') }}">
