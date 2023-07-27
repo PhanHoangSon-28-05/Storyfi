@@ -19,6 +19,13 @@
                                 data-parsley-validate enctype="multipart/form-data">
                                 @csrf
 
+                                <label style="font-weight: bold; font-size:15px;" for="icon">Icon * :</label>
+                                <input type="text" value="{{ old('icon') }}" id="icon" class="form-control"
+                                    icon="icon" />
+                                @error('icon')
+                                    <span class="text-danger">{{ $message }}</span><br>
+                                @enderror
+
                                 <label style="font-weight: bold; font-size:15px;" for="name">Name * :</label>
                                 <input type="text" value="{{ old('name') }}" id="name" class="form-control"
                                     name="name" />

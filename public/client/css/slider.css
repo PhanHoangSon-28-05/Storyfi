@@ -1,0 +1,110 @@
+.flipster--loop {
+
+    .flipster__item {
+        position: absolute;
+    }
+
+/*  .flipster__item--past { transform: translateX(-100%); }
+.flipster__item--future { transform: translateX(100%); }*/
+
+.flipster__item--past-2 { transform: translateX(-100%); }
+.flipster__item--future-2 { transform: translateX(100%); }
+
+.flipster__item--past-1 { transform: translateX(-50%); }
+.flipster__item--future-1 { transform: translateX(50%); }
+}
+
+.flipster--infinite-carousel {
+
+.flipster__container,
+.flipster__item {
+transition: all 350ms ease-in-out;
+transition-timing-function: cubic-bezier(.56,.12,.12,.98);
+}
+
+.flipster__item__content { transition: inherit; }
+
+.flipster__item {
+position: absolute;
+opacity: 0;
+perspective: 800px;
+}
+
+.flipster__item--past-2,
+.flipster__item--future-2 {
+opacity: 0.6;
+transition-delay: 90ms;
+}
+
+.flipster__item--past-1,
+.flipster__item--future-1 {
+opacity: 0.8;
+transition-delay: 60ms;
+}
+
+.flipster__item--current {
+opacity: 1;
+transition-delay: 0;
+}
+
+.flipster__item--past .flipster__item__content,
+.flipster__item--future .flipster__item__content { transform: scale(0.4); }
+
+.flipster__item--past-2 .flipster__item__content { transform: translateX(-75%) rotateY(45deg) scale(0.6); }
+.flipster__item--future-2 .flipster__item__content { transform: translateX(75%) rotateY(-45deg) scale(0.6); }
+
+.flipster__item--past-1 .flipster__item__content { transform: translateX(-50%) rotateY(45deg) scale(0.8); }
+.flipster__item--future-1 .flipster__item__content { transform: translateX(50%) rotateY(-45deg) scale(0.8); }
+
+.flipster__item--current .flipster__item__content { transform: translateX(0) rotateY(0deg) scale(1); }
+}
+  .flipster-container {
+    /* Đặt kích thước chiều rộng của flipster container */
+    max-width: 300px; /* Thay đổi giá trị tùy ý */
+    margin: 0 auto; /* Canh giữa container */
+  }
+
+  .flipster__item__content{
+    width: 200px;
+    height: 400px;
+  }
+  .flipster__item__content img{
+    /* Thay đổi kích thước của hình nhỏ tại đây */
+    width: 200px; /* Đặt kích thước chiều rộng */
+    height: 370px;  /*Đặt kích thước chiều cao */
+    object-fit: cover; /* Căn chỉnh hình ảnh trong kích thước đã đặt */
+  }
+
+  /* Đảm bảo tất cả các <li> cùng chiều cao với chiều cao của hình nhỏ */
+  .flipster__item {
+    width: 200px;
+    height: 410px; /* Đặt chiều cao cho tất cả các <li> */
+  }
+
+  .content-placeholder {
+    height: 100%; /* Chiều cao 100% để đảm bảo cùng chiều cao với item trên */
+  }
+
+.read-more-button {
+    display: none;
+    opacity: 0; /* Mặc định ẩn nút button */
+
+}
+.read-more-button p{
+    margin-left: 5px;
+    margin-bottom: 0px;
+}
+
+.flip-content:hover img{
+    width: 200px;
+    height: 200px;
+}
+
+
+.flip-content:hover .read-more-button {
+    width: 200px;
+    border-radius: 5px;
+    background-color: rgb(219,219,224);
+    display: inline-block;
+    opacity: 1;
+}

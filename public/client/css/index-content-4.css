@@ -1,0 +1,38 @@
+.content-4 .first{
+    width: 204px;
+    height: 170px;
+}
+
+.content-4 .first h3{
+    border-bottom: 1px solid black;
+}
+
+.content-4 .first h3 a{
+    display: inline-block;
+    width: 155px;
+    font-size: 22px;
+}
+
+.content-4 .book-list li{
+    /* width: 200px; */
+    /* display: inline-block; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(9em + 7ch);
+}
+
+.content-4 .book-list li a:hover{
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .content-4 .first{
+        width: 100%;
+        margin-left: 5px;
+    }
+
+    .content-4 .first h3 a{
+        margin-right: 259px;
+    }
+}

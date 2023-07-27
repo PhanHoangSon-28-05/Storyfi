@@ -10,13 +10,15 @@
                 @foreach ($stories_hot as $story_hot)
                     <li class="d-flex flex-row justify-content-between">
                         <div class="d-flex align-items-center">
-                            <a class="channel" href="{{ URL::route('home.story.index', $story_hot->slug) }}" target="_blank" data-eid="qd_A102">
+                            <a class="channel" href="{{ URL::route('home.story.index', $story_hot->slug) }}"
+                                target="_blank" data-eid="qd_A102">
                                 <img src="{{ url('storage/images/' . $story_hot->image) }}" alt=""
                                     style="width: 40px; height: 40px;">
                             </a>
                             <strong>
-                                <a class="name ms-1" href="{{ URL::route('home.story.index', $story_hot->slug) }}" target="_blank" data-eid="qd_A103"
-                                    data-bid="1037135031" title="Mã Đường Hoài">{{ $story_hot->name }}</a>
+                                <a class="name ms-1" href="{{ URL::route('home.story.index', $story_hot->slug) }}"
+                                    target="_blank" data-eid="qd_A103" data-bid="1037135031"
+                                    title="Mã Đường Hoài">{{ $story_hot->name }}</a>
                                 <cite class="hot"></cite>
                             </strong>
                         </div>

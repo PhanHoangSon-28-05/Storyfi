@@ -60,9 +60,11 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
 
     public function getNew_story()
     {
-        return $this->model->orderBY('created_at', 'desc')->whereHas('users', function ($query) {
+        $new_story = $this->model->orderBY('created_at', 'desc')->whereHas('users', function ($query) {
             $query->where('status', 2);
         })->take(14)->get();
+        // dd($new_story);
+        return $new_story;
     }
 
     public function getStory_short()
@@ -126,5 +128,101 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
         // dd($chapters);
 
         return $chapters;
+    }
+    //Content 4
+    public function getIndex_story_kinh_di()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'kinh dị');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_ngon_tinh()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'ngôn tình');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_tinh_yeu()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'hài hước');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_tam_ly()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'tâm lý');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_teen()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'truyện teen');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_hoc_duong()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'học đường');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_hai()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'hài');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    public function getIndex_story_trong_sinh()
+    {
+        $horrified = $this->model->orderBY('created_at', 'desc')->with(['titles', 'categories', 'users'])->whereHas('categories', function ($query) {
+            $query->where('name', 'trọng sinh');
+        })->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(5)->get();
+        // dd($horrified);
+        return $horrified;
+    }
+
+    //Content 5
+    public function getHot_story_header()
+    {
+        return $this->model->orderBY('view', 'desc')->whereHas('users', function ($query) {
+            $query->where('status', 2);
+        })->take(6)->get();
     }
 }

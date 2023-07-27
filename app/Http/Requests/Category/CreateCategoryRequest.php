@@ -24,6 +24,7 @@ class CreateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
+            'icon' => 'required',
             'name' => 'required',
         ];
     }

@@ -1,0 +1,23 @@
+.content-5 .story{
+    height: 400px;
+    margin-right: 5px;
+    border-radius: 4px;
+    background-color: rgb(247,247,247);
+    padding: 6px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1.5s ease-in-out;
+}
+
+.content-5 .book-chapter{
+    width: 150px;
+    margin-bottom: 0px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(9em + 7ch);
+}
+
+.content-5 .content-wrapper .name{
+    height: 47px;
+}

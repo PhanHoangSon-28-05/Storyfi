@@ -22,7 +22,19 @@ page-body nav{
     background-color: rgb(255, 255, 255);
 }
 
-page-body nav .dropdown{
+page-body nav .dropdown.a{
+    background-color: rgb(236, 234, 234);
+    padding-right: 115px;
+    margin-left: -65px;
+}
+
+@media (max-width: 768px) {
+    page-body nav .dropdown.a{
+        padding-right: 0px;
+        margin-left: 0px;}
+}
+
+page-body nav .dropdown.b{
     background-color: rgb(255, 255, 255);
     padding-right: 80px;
 }
@@ -30,7 +42,7 @@ page-body nav .dropdown{
 .other-categories .nav-event a {
     margin-top: -8px;
     margin-bottom: -8px;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     border-top: 3px solid transparent;
     transition: border-color .5s;
@@ -59,6 +71,7 @@ page-body nav .dropdown{
 }
 
 dl.cf{
+    font-size: 14px;
     width: 250px;
     margin-left: -70px;
     display: grid;
@@ -67,11 +80,15 @@ dl.cf{
     grid-gap: 10px;
     background-color: white;
     padding-left: 12px;
-    margin-top: -4px;
+    margin-top: -3px;
+}
+
+dl.cf em i{
+    color: black;
 }
 @media (max-width: 768px) {
     dl.cf{
-        width: 250px;
+        width: 100%;
         margin-left: 0px;}
 }
 
@@ -92,23 +109,11 @@ dd span {
 }
 
 .notice-wrap.fr .notice h3{
-    font-size: 17px;
+    font-size: 19px;
     margin-bottom: 10px;
     margin-top: 5px;
     font-weight: bold;
     text-align: center;
-}
-
-
-
-.notice-list ul li {
-    font-size: 14px;
-    margin-bottom: 3px;
-    margin-left: 5px;
-}
-
-.notice-list ul li .red{
-    color: #ff0000;
 }
 
 .attention {
@@ -219,23 +224,6 @@ dd span {
     background-color: rgba(128, 128, 128, 0.1);
 }
 
-.notice-wrap.fr .notice{
-    width: 250px;
-    background-color: rgb(252,252,250);
-    border: 1px solid rgba(200, 198, 198, 0.3);
-    margin-top: -5px;
-}
-
-.notice-list ul li {
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-
-.notice-list ul li .red{
-    color: #ff0000;
-}
-
 .attention {
     padding: 12px;
     display: flex;
@@ -253,7 +241,7 @@ dd span {
 
 .notice-banner img{
     padding-top: 10px;
-    width: 200px;
+    width: 250px;
 }
 
 @media (max-width: 768px) {
@@ -264,12 +252,30 @@ dd span {
     .notice-wrap.fr .notice{
         width: 100%;
     }
-    .notice-list ul li {
-        font-size: 20px;
-    }
   }
 
-.content .name{
+.content .notice-wrap.fr .name{
+    font-size: 13px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(9em + 10ch);
+}
+
+@media (max-width: 768px) {
+    /* Áp dụng luật CSS khác cho màn hình điện thoại */
+    .content .notice-wrap.fr .name{
+        margin-right: 10px;
+        display: inline-block;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        max-width: none;
+    }
+}
+
+.content .book-list-wrap .name{
     font-size: 10px;
     display: inline-block;
     white-space: nowrap;
@@ -280,22 +286,14 @@ dd span {
 
 @media (max-width: 768px) {
     /* Áp dụng luật CSS khác cho màn hình điện thoại */
-    .content .name{
-      margin-right: 10px;
-      display: inline-block;
-      white-space: normal;
-      overflow: visible;
-      text-overflow: clip;
-      max-width: none;
+    .content .book-list-wrap .name{
+        margin-right: 10px;
+        white-space: normal;
+        overflow: none;
+        max-width: none;
     }
-  }
-
-
-.content .channel strong{
-    font-size: 15px;
-    display: inline-block;
-    overflow: hidden;
 }
+
 
 .content .name:hover {
     color: red;
@@ -359,6 +357,14 @@ dd span {
     max-width: calc(12em + 14ch);
 }
 
+.book-list .unfold .book-wrap.cf h3{
+    background-color: rgb(191,44,36);
+    color: white;
+    width: 45px;
+    font-size: 20px;
+    padding: 1px;
+}
+
 .book-list .unfold .book-wrap.cf .book-cover {
     order: 2;
 }
@@ -368,20 +374,25 @@ dd span {
     height: 140px;
 }
 
+
 .book-list .num-box{
     float: left;
-    padding-right: 3px;
+}
+
+.book-list .name-box{
+    margin-top: 8px;
+    border-top: 2px solid rgb(230,230,230);
 }
 
 .book-list .name-box .name{
     float: left;
     width: 250px;
-    margin-right: 30px;
+    margin-right: 27px;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(6em + 7ch);
+    max-width: calc(6em + 10ch);
 }
 
 .book-list .name-box .name:hover{
@@ -393,13 +404,13 @@ dd span {
     /* Áp dụng luật CSS khác cho màn hình điện thoại */
     .book-list .name-box .name{
       float: left;
-      width: 100%;
+      width: 400px;
       margin-right: 10px;
-      display: block;
-      white-space: normal;
-      overflow: visible;
-      text-overflow: clip;
-      max-width: none;
+      display: inline;
+      white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(6em + 22ch);
     }
   }
   .name-categori-list-book span{
@@ -417,11 +428,6 @@ dd span {
     margin-left: -70px;
 }
 
-@media (max-width: 768px) {
-    .book-list-wrap.fl{
-        margin-left: 0px;}
-}
-
 .book-list-wrap h3{
     font-size: 18px;
     padding-bottom: 5px;
@@ -435,10 +441,20 @@ dd span {
     padding-bottom: 3px;
     border-bottom: 2px solid #bab4b4;
 }
+
 .book-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .book-list-wrap.fl, .book-list-wrap.fr{
+        width: 100%;
+        margin-left: 0px;}
+    .book-list-wrap .book-list li{
+        width: 100%;
+    }
 }
 
 .book-item {
@@ -471,6 +487,7 @@ dd span {
 }
 
 .book-details {
+    width: 202px;
     flex-grow: 1;
 }
 
@@ -500,8 +517,61 @@ dd span {
     max-width: calc(12em + 14ch);
 }
 
+.book-wrap.cf .chapter{
+    margin-bottom: 4px;
+    width: 163px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(12em + 14ch);
+}
+
 .book-info {
     font-size: 14px;
     margin-bottom: 2px;
     font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .rank-list{
+        width: 100%;
+    }
+    .book-wrap.cf h4{
+        width: 275px;
+    }
+    .book-details {
+        width: 271px;
+        margin-left: 4px;
+        flex-grow: 1;
+    }
+}
+
+.num-box{
+    width: 20px;
+    height: 25px;
+    margin-top: 3px;
+    margin-right: 2px;
+    border-radius: 3px;
+}
+.num-box .num2{
+    font-weight: bold;
+    padding: 1px 2px 5px 5px;
+}
+
+.col-xl-1 {
+    flex: 0 0 auto;
+    width: 3%;
+}
+.col-xl-10 {
+    flex: 0 0 auto;
+    width: 95%;
+}
+@media (max-width: 768px) {
+    .col-xl-1 {
+        width: 100%;
+    }
+    .col-xl-10 {
+        width: 100%;
+    }
 }

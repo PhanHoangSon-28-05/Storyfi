@@ -41,6 +41,11 @@
                 </li>
             @endhasrole
 
+            @hasrole(['super-admin', 'admin'])
+                <li><a href="{{ URL::route('list-stories-comment.index') }}"><i class="fa fa-home"></i> All Comment </a>
+                </li>
+            @endhasrole
+
             @can('show-story')
                 <li><a><i class="fa fa-home"></i> Story <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

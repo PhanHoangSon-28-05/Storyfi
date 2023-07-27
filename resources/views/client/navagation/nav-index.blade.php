@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg mt-3 mb-1 text-black">
-    <div class="container">
-        <div class=" navbar-collapse" id="navbarNavDropdown">
+    <div class="container" style="padding: -8px">
+        <div class="navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav other-categories">
                 <li class="nav-item dropdown a">
                     <a class="nav-link dropdown-toggle list" href="#" role="button" data-bs-toggle="dropdown"

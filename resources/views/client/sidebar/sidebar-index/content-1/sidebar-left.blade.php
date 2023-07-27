@@ -5,7 +5,7 @@
                 <a href="{{ URL::route('home.category', Str::slug($item->name)) }}" title="" target="_blank"
                     data-eid="qd_A71">
                     <cite>
-                        <em class="iconfont"><i><i class="fas fa-check-circle"></i> {{ $item->name }}</i></em>
+                        <em class="iconfont"><i>{{ $item->icon }}</i> {{ $item->name }}</em>
                         <span class="info">
                             <b><i class="fas fa-book"></i> {{ $item->stories_count }} cuốn</b>
                         </span>

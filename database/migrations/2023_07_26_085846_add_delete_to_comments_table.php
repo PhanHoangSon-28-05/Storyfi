@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('icon', 10);
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->softDeletes()->nullable();// đoạn này để thêm trường deleted_at, mặc định giá trị là null
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::table('categories', function (Blueprint $table) {
+
+        });
     }
 };

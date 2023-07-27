@@ -70,6 +70,7 @@ page-body nav .dropdown{
   }
 
 .physical-condition .btn-container .btn {
+    width: 83px;
     flex-grow: 1;
     text-align: center;
     padding: 5px 5px;

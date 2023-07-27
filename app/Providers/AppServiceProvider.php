@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Story\StoryRepository::class,
         );
         $this->app->singleton(
+            \App\Repositories\Comment\CommentRepositoryInterface::class,
+            \App\Repositories\Comment\CommentRepository::class,
+        );
+        $this->app->singleton(
             \App\Repositories\Client\Home\Category\CategoryRepositoryInterface::class,
             \App\Repositories\Client\Home\Category\CategoryRepository::class,
         );
@@ -33,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             \App\Repositories\Client\Home\Chapter\ChapterRepositoryInterface::class,
             \App\Repositories\Client\Home\Chapter\ChapterRepository::class,
+        );
+        $this->app->singleton(
+            \App\Repositories\Client\Home\Comment\CommentRepositoryInterface::class,
+            \App\Repositories\Client\Home\Comment\CommentRepository::class,
         );
         $this->app->singleton(
             \App\Repositories\View\ViewRepositoryInterface::class,

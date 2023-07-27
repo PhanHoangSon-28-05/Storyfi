@@ -9,18 +9,25 @@ use App\Repositories\Client\Home\Story\StoryRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Repositories\Client\Home\Comment\CommentRepositoryInterface;
 
 class ViewController extends Controller
 {
     protected $categoryRepo;
     protected $storyRepo;
     protected $chapterRepo;
+    protected $commentRepo;
 
-    public function __construct(StoryRepositoryInterface $storyRepo, CategoryRepositoryInterface $categoryRepo, ChapterRepositoryInterface $chapterRepo)
-    {
+    public function __construct(
+        StoryRepositoryInterface $storyRepo,
+        CategoryRepositoryInterface $categoryRepo,
+        ChapterRepositoryInterface $chapterRepo,
+        CommentRepositoryInterface $comment
+    ) {
         $this->storyRepo = $storyRepo;
         $this->categoryRepo = $categoryRepo;
         $this->chapterRepo = $chapterRepo;
+        $this->commentRepo = $comment;
     }
 
     public function index()
@@ -35,6 +42,19 @@ class ViewController extends Controller
         $stories_short = $this->storyRepo->getStory_short();
         $stories_count_chapter = $this->storyRepo->getStory_countChapter();
 
+        //content-4
+        $stories_kinhdi = $this->storyRepo->getIndex_story_kinh_di();
+        $stories_ngon_tinh = $this->storyRepo->getIndex_story_ngon_tinh();
+        $stories_tinhyeu = $this->storyRepo->getIndex_story_tinh_yeu();
+        $stories_tamly = $this->storyRepo->getIndex_story_tam_ly();
+        $stories_teen = $this->storyRepo->getIndex_story_teen();
+        $stories_hocduong = $this->storyRepo->getIndex_story_hoc_duong();
+        $stories_hai = $this->storyRepo->getIndex_story_hai();
+        $stories_trongsinh = $this->storyRepo->getIndex_story_trong_sinh();
+
+        //content-5
+        $stories_hot_header = $this->storyRepo->getHot_story_header();
+
         return view('client.page-body.page-body-index', compact(
             'stories_all',
             'categories',
@@ -44,7 +64,16 @@ class ViewController extends Controller
             'stories_ngontinh',
             'stories_new',
             'stories_short',
-            'stories_count_chapter'
+            'stories_count_chapter',
+            'stories_kinhdi',
+            'stories_ngon_tinh',
+            'stories_tinhyeu',
+            'stories_tamly',
+            'stories_teen',
+            'stories_hocduong',
+            'stories_hai',
+            'stories_trongsinh',
+            'stories_hot_header',
         ));
     }
 
@@ -66,13 +95,16 @@ class ViewController extends Controller
         $stories_hot = $this->storyRepo->getHot_story();
         $stories_sung_hot = $this->storyRepo->getIndex_story_sung_hot();
 
+        $stories_new = $this->storyRepo->getNew_story();
+
         return view('client.page-body.page-body-view-category', compact(
             'stories_all',
             'categories',
             'slug_categories',
             'stories_category',
             'stories_hot',
-            'stories_sung_hot'
+            'stories_sung_hot',
+            'stories_new'
         ));
     }
 
@@ -86,7 +118,8 @@ class ViewController extends Controller
         $stories_sung_hot = $this->storyRepo->getIndex_story_sung_hot();
         $stories_user = $this->storyRepo->getStory_user($slug);
         $stories_chapter = $this->storyRepo->getStory_chapter($slug);
-
+        $comments = $this->commentRepo->show_comment($summaries['id']);
+        // dd($comments->users);
         return view('client.page-body.page-body-view-story', compact(
             'stories_all',
             'categories',
@@ -94,7 +127,8 @@ class ViewController extends Controller
             'stories_sung_hot',
             'stories_new',
             'stories_user',
-            'stories_chapter'
+            'stories_chapter',
+            'comments'
         ));
     }
 
@@ -111,12 +145,14 @@ class ViewController extends Controller
 
         $stories_chapter = $this->storyRepo->getStory_chapter($slugstory);
 
+        $comments = $this->commentRepo->show_comment($summaries['id']);
         return view('client.page-body.page-body-content-chapter', compact(
             'stories_all',
             'categories',
             'contentChapter',
             'summaries',
-            'stories_chapter'
+            'stories_chapter',
+            'comments'
         ));
     }
 
@@ -127,12 +163,23 @@ class ViewController extends Controller
         $summaries = $this->storyRepo->getStory_summary($slugstory);
 
         $stories_chapter = $this->storyRepo->getStory_chapter($slugstory);
-
+        $comments = $this->commentRepo->show_comment($summaries['id']);
         return view('client.page-body.page-body-content-chapter', compact(
             'stories_all',
             'categories',
             'summaries',
-            'stories_chapter'
+            'stories_chapter',
+            'comments'
         ));
+    }
+
+    public function comment(Request $request, $id_user, $id_story)
+    {
+        $array = $request->all();
+        $array['user_id'] = $id_user;
+        $array['story_id'] = $id_story;
+        // dd($array);
+        $this->commentRepo->post_comment($array);
+        return redirect()->back();
     }
 }

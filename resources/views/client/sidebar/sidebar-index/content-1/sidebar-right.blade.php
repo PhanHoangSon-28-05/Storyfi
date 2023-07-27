@@ -16,14 +16,15 @@
                                 <div class="d-flex align-items-center">
                                     <a class="channel" href="{{ URL::route('home.story.index', $story_new[0]->slug) }}"
                                         target="_blank" data-eid="qd_A102">
-                                        <img src="{{ url('storage/images/' . $story_new[0]->image) }}" alt=""
-                                            style="width: 40px; height: 40px;">
+                                        {{-- <img src="{{ url('storage/images/' . $story_new[0]->image) }}" alt=""
+                                            style="width: 40px; height: 40px;"> --}}
                                     </a>
                                     <strong>
                                         <a class="name ms-1"
                                             href="{{ URL::route('home.story.index', $story_new[0]->slug) }}"
                                             target="_blank" data-eid="qd_A103" data-bid="1037135031"
-                                            title="Mã Đường Hoài">{{ $story_new[0]->name }}</a>
+                                            title="Mã Đường Hoài"><span>[</span>New<span>]</span>
+                                            {{ $story_new[0]->name }}</a>
                                         <cite class="hot"></cite>
                                     </strong>
                                 </div>

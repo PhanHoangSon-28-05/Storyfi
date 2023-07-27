@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChapterController;
+use App\Http\Controllers\Admin\CommentControlelr;
 use App\Http\Controllers\Admin\ListStoryContoller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\StoryController;
@@ -52,7 +53,10 @@ Route::group(['prefix' => '/stories'], function () {
     Route::get('/{slug}', [ViewController::class, 'summary_story'])->name('home.story.index');
     Route::get('/{slugstory}/contents/{slug}', [ViewController::class, 'content_chapter'])->name('home.content');
     Route::get('/{slugstory}/contents', [ViewController::class, 'content_chapter_short'])->name('home.content.short');
+    Route::post('/{id_user}/{id_story}', [ViewController::class, 'comment'])->name('comment');
 });
+
+
 
 
 Route::get('/admin/dashboard', function () {
@@ -133,6 +137,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/{coupon}/edit', 'edit')->name('edit')->middleware('permission:update-chapter');
     });
     Route::prefix('list-stories')->controller(ListStoryContoller::class)->name('list-stories.')->group(function () {
+        Route::get('/', 'index')->name('index')->middleware('permission:show-list-story');
+        Route::get('/{coupon}', 'view')->name('show')->middleware('permission:show-list-story');
+        Route::put('/{coupon}', 'update')->name('update')->middleware('permission:update-list-story');
+    });
+    Route::prefix('list-stories-comment')->controller(CommentControlelr::class)->name('list-stories-comment.')->group(function () {
         Route::get('/', 'index')->name('index')->middleware('permission:show-list-story');
         Route::get('/{coupon}', 'view')->name('show')->middleware('permission:show-list-story');
         Route::put('/{coupon}', 'update')->name('update')->middleware('permission:update-list-story');

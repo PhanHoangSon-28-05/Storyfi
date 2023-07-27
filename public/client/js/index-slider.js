@@ -6,30 +6,30 @@ window.addEventListener('DOMContentLoaded', function () {
     const slideCount = slides.length;
     let currentIndex = 0;
     let timer;
-  
+
     function moveToSlide(index) {
       slideList.style.transform = `translateX(-${slideWidth * index}px)`;
       currentIndex = index;
     }
-  
+
     function updateActiveButton() {
       const buttons = document.querySelectorAll('#thumb .lbf-button');
       buttons.forEach((button) => button.classList.remove('active'));
       buttons[currentIndex].classList.add('active');
     }
-  
+
     function startAutoSlide() {
       timer = setInterval(() => {
         const nextIndex = (currentIndex + 1) % slideCount;
         moveToSlide(nextIndex);
         updateActiveButton();
-      }, 1500);
+      }, 3000);
     }
-  
+
     function stopAutoSlide() {
       clearInterval(timer);
     }
-  
+
     function handleButtonClick(e) {
       e.preventDefault();
       const target = e.target.getAttribute('href');
@@ -40,14 +40,13 @@ window.addEventListener('DOMContentLoaded', function () {
         stopAutoSlide();
       }
     }
-  
+
     slider.addEventListener('mouseover', stopAutoSlide);
     slider.addEventListener('mouseout', startAutoSlide);
-  
+
     const buttons = document.querySelectorAll('#thumb .lbf-button');
     buttons.forEach((button) => button.addEventListener('click', handleButtonClick));
-  
+
     updateActiveButton();
     startAutoSlide();
   });
-  

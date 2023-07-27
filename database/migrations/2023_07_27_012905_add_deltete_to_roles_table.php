@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('icon', 10);
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('roles', function (Blueprint $table) {
+            $table->softDeletes()->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::table('roles', function (Blueprint $table) {
+            //
+        });
     }
 };

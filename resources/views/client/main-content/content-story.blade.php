@@ -3,7 +3,7 @@
         <div class="row border-3 rounded-3  mt-3">
             <div class="col-lg-4 mt-3">
                 <div class="book-image">
-                    <img src="{{ url('storage/images/' . $summaries->image ) }}" alt="">
+                    <img src="{{ url('storage/images/' . $summaries->image) }}" alt="">
                 </div>
             </div>
             <div class="col-lg-8 mt-2">
@@ -55,8 +55,9 @@
                                     chương</button>
                             @endif
                         @endif
-
-                        <button id="btn2" class="btn" onclick="showContent(2)">Bình Luận</button>
+                        @if ($comments != null)
+                            <button id="btn2" class="btn" onclick="showContent(2)">Bình Luận</button>
+                        @endif
                     </p>
                 </div>
             </div>
@@ -96,21 +97,25 @@
                     </div>
                 </div>
             </div>
-
-            <div id="content2" class="content-physical-view mb-2" style="display: none;">
-                <div class="container mt-1 comment">
-                    <div class="row">
-                        <div class="col-md-1 img_user">
-                            <i class="fas fa-user-circle"></i>
+            {{-- {{ dd($comments == null) }} --}}
+            @if ($comments != null)
+                <div id="content2" class="content-physical-view mb-2" style="display: none;">
+                    @foreach ($comments as $comment)
+                        <div class="container mt-1 comment">
+                            <div class="row">
+                                <div class="col-md-1 img_user">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="col-md-11 information">
+                                    <h4>{{ $comment->users->fullname }}</h4>
+                                    <p><i class="fas fa-clock"></i> <span>{{ $comment->created_at }}</span></p>
+                                    <p>{{ $comment->content }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-11 information">
-                            <h4>Tên người dùng</h4>
-                            <p><i class="fas fa-clock"></i> <span>Thời gian</span></p>
-                            <p>Nội dung</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
+            @endif
         </div>
         <div class="row border-3 rounded-3  mt-3">
             <div class="mt-3">

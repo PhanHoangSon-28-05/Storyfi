@@ -20,6 +20,13 @@
                                 @csrf
                                 @method('PUT')
 
+                                <label style="font-weight: bold; font-size:15px;" for="icon">Icon * :</label>
+                                <input type="text" value="{{ old('icon') ?? $category->icon }}" id="fuleicon"
+                                    class="form-control" icon="icon" />
+                                @error('icon')
+                                    <span class="text-danger">{{ $message }}</span><br>
+                                @enderror
+
                                 <label style="font-weight: bold; font-size:15px;" for="name">Name * :</label>
                                 <input type="text" value="{{ old('name') ?? $category->name }}" id="fulename"
                                     class="form-control" name="name" />
