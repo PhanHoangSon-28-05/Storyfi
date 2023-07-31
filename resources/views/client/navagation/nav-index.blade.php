@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg mt-3 mb-1 text-black">
+<nav class="navbar-expand-lg mt-3 mb-1 text-black">
     <div class="container" style="padding: -8px">
         <div class="navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav other-categories">

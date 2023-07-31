@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(219,219,224);
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden;
 }
 
@@ -20,18 +20,23 @@ header .sign-out a:hover {
 
 page-body nav{
     background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 page-body nav .dropdown.a{
     background-color: rgb(236, 234, 234);
-    padding-right: 115px;
-    margin-left: -65px;
+    padding-right: 136px;
+    margin-left: -70px;
+    margin-right: 5px;
+    padding-left: 4px;
 }
 
 @media (max-width: 768px) {
     page-body nav .dropdown.a{
         padding-right: 0px;
-        margin-left: 0px;}
+        margin-left: 0px;
+        padding-left: 0px;
+    }
 }
 
 page-body nav .dropdown.b{
@@ -61,6 +66,10 @@ page-body nav .dropdown.b{
     width: 115px;
 }
 
+.dropdown.b .nav-link:hover .dropdown-menu.b{
+    display: block;
+}
+
 .dropdown-menu li:hover{
     background-color: #6797e9;
     border-radius: 15px;
@@ -81,6 +90,7 @@ dl.cf{
     background-color: white;
     padding-left: 12px;
     margin-top: -3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 dl.cf em i{
@@ -103,8 +113,10 @@ dd span {
 
 .notice-wrap.fr .notice{
     width: 250px;
+    padding-right: 2px;
     background-color: rgb(252,252,250);
-    border: 1px solid rgba(200, 198, 198, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
 

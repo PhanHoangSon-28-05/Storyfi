@@ -1,5 +1,5 @@
 <div class="col-lg-2 col-md-2 col-sm-1">
-    <nav class="navbar navbar-transparent bg-transparent">
+    <nav class="navbar-transparent bg-transparent">
         <div class="row physical-condition">
             <div class="col">
                 <div class="btn-container">

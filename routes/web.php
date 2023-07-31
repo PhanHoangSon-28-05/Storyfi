@@ -146,4 +146,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/{coupon}', 'view')->name('show')->middleware('permission:show-list-story');
         Route::put('/{coupon}', 'update')->name('update')->middleware('permission:update-list-story');
     });
+
+    Route::get('tinymce', function () {
+        return view('admin.fi.tinymce');
+    });
+    Route::get('cdkeditor', function () {
+        return view('admin.fi.ckeditor');
+    });
 });

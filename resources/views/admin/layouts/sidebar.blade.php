@@ -3,6 +3,9 @@
         <h3>General</h3>
         <ul class="nav side-menu">
             <li><a href="{{ URL::route('admin.dashboard') }}"><i class="fa fa-home"></i> Dashboard </a></li>
+            <li><a href="filemanager"><i class="fa fa-home"></i> filemanager </a></li>
+            <li><a href="tinymce"><i class="fa fa-home"></i> tinymce </a></li>
+            <li><a href="cdkeditor"><i class="fa fa-home"></i> cdkeditor </a></li>
 
             @hasrole('super-admin')
                 <li><a><i class="fa fa-home"></i> Role <span class="fa fa-chevron-down"></span></a>

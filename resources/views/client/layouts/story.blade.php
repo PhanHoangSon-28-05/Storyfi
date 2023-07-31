@@ -81,3 +81,4 @@
 
 @yield('scripts')
 <script src="{{ URL::asset('client/js/scrollToTop.js') }}"></script>
+<script src="{{ URL::asset('client/js/view_story.js') }}"></script>

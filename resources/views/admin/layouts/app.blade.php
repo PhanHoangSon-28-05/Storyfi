@@ -66,6 +66,7 @@
 
     <link rel="stylesheet" href="{{ URL::asset('admin/vendors/index-admin.css') }}">
 
+    @FilemanagerScript
 </head>
 
 <body class="nav-md">

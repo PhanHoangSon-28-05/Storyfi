@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(219,219,224);
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden;
 }
 
@@ -142,7 +142,12 @@ a{
     font-size: 14px;
 }
 
+.physical-condition, #content1{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 .physical-condition .btn-container {
+    border-radius: 5px;
     display: flex;
     margin-bottom: -1px;
 }

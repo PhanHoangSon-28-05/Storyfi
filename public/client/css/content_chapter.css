@@ -20,6 +20,11 @@ a{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transition: box-shadow 1.5s ease-in-out;
 }
+
+.dropdown-menu.b li{
+    width: 115px;
+}
+
 .content-chapter{
   margin-left: -2px;
   margin-right: -2px;
@@ -117,7 +122,7 @@ z-index: 1;
 }
 
 .dropdown-menu.b{
-    width: 880px;
+    width: 850px;
 }
 
 .search-container ul{

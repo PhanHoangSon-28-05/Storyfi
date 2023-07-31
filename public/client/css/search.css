@@ -58,3 +58,13 @@
 .search-container li:hover{
     background-color: #bcddff;
 }
+
+@media (max-width: 768px) {
+    .search-box input[type="text"] {
+        width: 117%;
+    }
+    .search-box button {
+        top: 2px;
+        right: -43px;
+    }
+}
