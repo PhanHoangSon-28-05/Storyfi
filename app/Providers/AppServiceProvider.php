@@ -43,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Client\Home\Comment\CommentRepository::class,
         );
         $this->app->singleton(
+            \App\Repositories\Config\ConfigRepositoryInterface::class,
+            \App\Repositories\Config\ConfigRepository::class,
+        );
+        $this->app->singleton(
             \App\Repositories\View\ViewRepositoryInterface::class,
             \App\Repositories\View\ViewRepository::class,
         );

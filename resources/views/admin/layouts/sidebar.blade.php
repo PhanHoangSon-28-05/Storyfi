@@ -8,6 +8,12 @@
             <li><a href="cdkeditor"><i class="fa fa-home"></i> cdkeditor </a></li>
 
             @hasrole('super-admin')
+                <li><a><i class="fa fa-home"></i> Config <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ URL::route('configs.index') }}">List Config</a></li>
+                    </ul>
+                </li>
+
                 <li><a><i class="fa fa-home"></i> Role <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{ URL::route('roles.index') }}">List Role</a></li>
