@@ -82,10 +82,8 @@ class ViewController extends Controller
         $stories_all = $this->storyRepo->getAll();
         $categories = $this->categoryRepo->getAll();
 
-        // Lấy name category từ slug
-        $name_category = str_replace('-', ' ', Str::slug($slug_category));
-        $name_category = mb_convert_case($name_category, MB_CASE_TITLE, 'UTF-8');
-        $slug_categories = $this->categoryRepo->get_category($name_category);
+
+        $slug_categories = $this->categoryRepo->get_category($slug_category);
 
         //Lấy story theo category
         // dd($slug_categories);

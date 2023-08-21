@@ -143,10 +143,10 @@
                                         Category
                                         <span class="required" style="color: red;">*</span></label>
                                     <div class="col-md-10 col-sm-6" style="margin-top:10px">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                        <div class="">
+                                            <div class="col-md-10">
                                                 @foreach ($categories as $category)
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-3">
                                                         <div class="form-check form-check-inline">
                                                             <input name="categories_ids[]" class="form-check-input "
                                                                 type="checkbox" value="{{ $category->id }}"

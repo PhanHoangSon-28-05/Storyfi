@@ -41,12 +41,12 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-2">
-            <div class="sign-out">
+        <div class="col-lg-2 mt-2">
+            <div class="sign-out d-flex flex-row fs-6">
                 @if (auth()->check())
-                    {{ auth()->user()->fullname }} <a href="{{ route('logout.perform') }}" class="dropdown-item"><i
-                            class="fas fa-sign-out-alt"></i>
-                        Log Out</a>
+                    <p>{{ auth()->user()->fullname }}</p> <a class="ps-2" href="{{ route('logout.perform') }}"
+                        class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i></a>
                 @else
                     <a id="login-btn" href="{{ URL::route('client.login.show') }}" class="black" href="javascript:"
                         data-eid="qd_A06">Đăng nhập <em> | </em> Đăng ký</a>

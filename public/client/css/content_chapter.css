@@ -109,6 +109,9 @@ z-index: 1;
 
 
 .dropdown-menu{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
+}
+.dropdown-menu.a{
     width: 200px;
 }
 
@@ -120,9 +123,15 @@ z-index: 1;
 .dropdown-menu.a li:hover{
     background-color: #6797e9;
 }
-
+.dropdown-menu.b li{
+    width: 115px;
+    border-radius: 15px;
+}
 .dropdown-menu.b{
     width: 850px;
+}
+.dropdown-menu.b li:hover{
+    background-color: #6797e9;
 }
 
 .search-container ul{

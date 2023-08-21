@@ -21,7 +21,7 @@
 
                                 <label style="font-weight: bold; font-size:15px;" for="icon">Icon * :</label>
                                 <input type="text" value="{{ old('icon') }}" id="icon" class="form-control"
-                                    icon="icon" />
+                                    name="icon" />
                                 @error('icon')
                                     <span class="text-danger">{{ $message }}</span><br>
                                 @enderror

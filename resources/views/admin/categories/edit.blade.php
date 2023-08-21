@@ -22,7 +22,7 @@
 
                                 <label style="font-weight: bold; font-size:15px;" for="icon">Icon * :</label>
                                 <input type="text" value="{{ old('icon') ?? $category->icon }}" id="fuleicon"
-                                    class="form-control" icon="icon" />
+                                    class="form-control" name="icon" />
                                 @error('icon')
                                     <span class="text-danger">{{ $message }}</span><br>
                                 @enderror

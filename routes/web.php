@@ -83,15 +83,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // Route::resource('stories', StoryController::class);
     // Route::resource('chapters', ChapterController::class);
 
-    Route::prefix('configs')->controller(ConfigController::class)->name('configs.')->group(function () {
-        Route::get('/', 'index')->name('index')->middleware('role:super-admin');
-        Route::post('/', 'addConfig')->name('add')->middleware('role:super-admin');
-        Route::get('/create', 'create')->name('create')->middleware('role:super-admin');
-        Route::get('/{coupon}', 'show')->name('show')->middleware('role:super-admin');
-        Route::put('/{coupon}', 'updateConfig')->name('update')->middleware('role:super-admin');
-        Route::delete('/{coupon}', 'deleteConfig')->name('delete')->middleware('role:super-admin');
-        Route::get('/{coupon}/edit', 'edit')->name('edit')->middleware('role:super-admin');
-    });
+    // Route::prefix('configs')->controller(ConfigController::class)->name('configs.')->group(function () {
+    //     Route::get('/', 'index')->name('index')->middleware('role:super-admin');
+    //     Route::post('/', 'addConfig')->name('add')->middleware('role:super-admin');
+    //     Route::get('/create', 'create')->name('create')->middleware('role:super-admin');
+    //     Route::get('/{coupon}', 'show')->name('show')->middleware('role:super-admin');
+    //     Route::put('/{coupon}', 'updateConfig')->name('update')->middleware('role:super-admin');
+    //     Route::delete('/{coupon}', 'deleteConfig')->name('delete')->middleware('role:super-admin');
+    //     Route::get('/{coupon}/edit', 'edit')->name('edit')->middleware('role:super-admin');
+    // });
     Route::prefix('roles')->controller(RoleController::class)->name('roles.')->group(function () {
         Route::get('/', 'index')->name('index')->middleware('role:super-admin');
         Route::post('/', 'store')->name('store')->middleware('role:super-admin');

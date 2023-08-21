@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Cache;
+use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Story\CreateStotryRequest;
 use App\Http\Requests\Story\UpdateStotryRequest;
@@ -29,6 +31,7 @@ class StoryController extends Controller
      */
     public function index()
     {
+        // dd(Cache::read('Cache/generalSetting.tmp'));
         // $stories = Story::whereHas('users')->get();
         // $titles = Title::all();
         $stories = $this->storyRepo->getStory();
@@ -42,7 +45,7 @@ class StoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
         $titles = Title::all();
         return view('admin.stories.create', compact('categories', 'titles'));
     }
@@ -61,7 +64,6 @@ class StoryController extends Controller
         $dataCreate['image'] = str_replace('public/images/', '', $path);
         $dataCreate['slug'] = Str::slug($dataCreate['name']);
         $story = Story::create($dataCreate);
-
         // dd($story->toArray());
         $story->categories()->attach($dataCreate['categories_ids']);
 
@@ -69,6 +71,19 @@ class StoryController extends Controller
             // dd($dataCreate['status']);
             $story->users()->attach(auth()->user()->id, ['status' => $dataCreate['status'] ?? 0, 'point' => $dataCreate['point'] ?? 0]);
         }
+
+        // Cache::store('file')->put('Name_story', $request['name'], 10);
+
+
+        if (!empty(Cache::read(Constants::$fileName['generalSetting']))) {
+            $settings = $this->storyRepo->getstory_slug($dataCreate['slug']);
+            // dd($settings);
+            foreach ($settings as $setting) {
+                $arr_setting[$setting['slug']] =  $setting['name'];
+            }
+            Cache::write(Constants::$fileName['generalSetting'], json_encode($arr_setting));
+        }
+        $data = Cache::read(Constants::$fileName['generalSetting']);
 
         return redirect()->route('stories.index')->with('message', 'Create success');
     }

@@ -36,6 +36,12 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
         return $query;
     }
 
+    public function getstory_slug($slug)
+    {
+        $query = $this->model->where('slug', $slug)->get();
+        return $query;
+    }
+
     public function update_approval($id, $status)
     {
         $result = $this->model->where('id', $id)->first();

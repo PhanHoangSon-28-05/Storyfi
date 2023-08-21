@@ -42,8 +42,13 @@ page-body nav .dropdown{
     border-color: red; /* Màu đỏ cho đường viền trên */
 }
 
+.dropdown-menu.a{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
+}
+
 .dropdown-menu.b{
     width: 850px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
 }
 
 .dropdown-menu.b li{
