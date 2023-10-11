@@ -57,15 +57,13 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
     public function createChapter($attributes = [])
     {
         $attributes['slug'] = Str::slug($attributes['number_chapter']) . '-' . Str::slug($attributes['name']);
-        $storyId = $attributes['story_id'];
 
+        $storyId = $attributes['story_id'];
         $query = [
             'sumChapter' => Story::find($storyId)->increment('sum_chapter', 1),
             'point' => User_story::where('story_id', $storyId)->increment('point', 5)
         ];
-
         $results = [];
-
         foreach ($query as $key => $value) {
             $results[$key] = $value;
         }

@@ -23,5 +23,5 @@ use SoftDeletes;//dòng này để tự động thêm điều kiện delete_at =
         static::creating(function ($permissions) {
             $permissions->guard_name = 'web';
         });
-    }
+    }   
 }
